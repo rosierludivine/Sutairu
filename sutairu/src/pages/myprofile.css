@@ -1,0 +1,66 @@
+.profile-container {
+    margin: 0 auto;
+    /* padding: 20px; */
+    max-height: 100vh;
+    overflow: hidden;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .info-card,
+  .password-card,
+  .logout-container,
+  .faq-btn {
+    flex: 1;
+    margin-right: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    justify-content: center;
+    border-radius: 8px;
+  }
+  
+  .info-card,
+  .password-card {
+    background-color: #f7f3f5;
+  }
+  
+  .logout-container {
+    display: flex;
+    align-items: flex-start;
+    border: none;
+  }
+  
+  .faq-btn {
+    background-color: white;
+    text-decoration: underline;
+    color: #7d4f50;
+    border: none;
+  }
+  
+  .btn {
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+  
+  h1 {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 48px;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .password-card p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
