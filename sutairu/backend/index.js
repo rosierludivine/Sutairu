@@ -1,112 +1,32 @@
-// Code  for mongoose config in backend
-// Filename - backend/index.js
- 
-// To connect with your mongoDB database
+import express from "express";
+import mongoose from "mongoose";
+import userRouter from "./routes/userRoute.js";
 
-const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost:27017/', {
-
-    dbName: 'sutairu',
-
-    useNewUrlParser: true,
-
-    useUnifiedTopology: true
-}, err => err ? console.log(err) : 
-
-    console.log('Connected to yourDB-name database'));
- 
-// Schema for users of app
-
-const UserSchema = new mongoose.Schema({
-
-    name: {
-
-        type: String,
-
-        required: true,
-
-    },
-
-    email: {
-
-        type: String,
-
-        required: true,
-
-        unique: true,
-
-    },
-
-    date: {
-
-        type: Date,
-
-        default: Date.now,
-
-    },
-});
-
-const User = mongoose.model('users', UserSchema);
-User.createIndexes();
- 
-// For backend and express
-
-const express = require('express');
 const app = express();
+const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/?retryWrites=true&w=majority&appName=Sutairu";
 
-const cors = require("cors");
-
-console.log("App listen at port 5000");
-app.use(express.json());
-app.use(cors());
-
-app.get("/", (req, resp) => {
- 
-
-    resp.send("App is Working");
-
-    // You can check backend is working or not by 
-
-    // entering http://loacalhost:5000
-
-     
-
-    // If you see App is working means
-
-    // backend working properly
-});
- 
-
-app.post("/register", async (req, resp) => {
-
+async function connectToDatabase() {
     try {
+        app.use(express.json());
 
-        const user = new User(req.body);
+        // Configuration des en-têtes CORS
+        app.use((req, res, next) => {
+            res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000"); // Autoriser les requêtes depuis localhost:5000
+            res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"); // Autoriser les méthodes HTTP spécifiées
+            res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization"); // Autoriser les en-têtes spécifiés
+            next();
+        });
 
-        let result = await user.save();
-
-        result = result.toObject();
-
-        if (result) {
-
-            delete result.password;
-
-            resp.send(req.body);
-
-            console.log(result);
-
-        } else {
-
-            console.log("User already register");
-
-        }
- 
-
-    } catch (e) {
-
-        resp.send("Something Went Wrong");
-
+        await mongoose.connect(uri); 
+        console.log("connected to Mongodb");
+        
+        app.use("/users",userRouter);
+        app.listen(5000, ()=> {
+            console.log("Server is running on port 5000")
+        });
+    } catch (error) {
+        console.error('Erreur connecting to MongoDB :', error);
     }
-});
-app.listen(5000);
+}
+
+connectToDatabase(); // Appel de la fonction pour se connecter à la base de données

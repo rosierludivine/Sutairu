@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import image2 from "../images/image2.jpg";
 import "./inscription.css";
 function Connection() {
@@ -10,11 +10,11 @@ function Connection() {
       <div class="inscription-section">
         <h2>CONNEXION</h2>
         <div class="input-group">
-          <label for="email">Email :</label>
-          <input type="email" id="email" />
+        <label for="email">Email :</label>
+        <input type="email" id="email" />
         </div>
         <div class="input-group">
-          <label for="password">Password:</label>
+          <label for="password">Password :</label>
           <input type="password" id="password" />
         </div>
         <button type="button">CONNEXION</button>

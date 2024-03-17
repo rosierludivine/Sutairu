@@ -1,69 +1,68 @@
 .process-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #f7f3f5;
-    border-radius: 11px;
-  }
-  
-  .process-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 20%;
-  }
-  
-  .process-icon {
-    background-color: #7d4f50;
-    border-radius: 50%;
-    width: 182px;
-    height: 182px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .process-step:first-child .process-icon:before {
-    display: none;
-  }
-  
-  .process-icon img {
-    width: 50%;
-  }
-  
-  .process-text {
-    color: #7d4f50;
-    font-size: 700;
-    font-size: 20px;
-    text-align: center;
-  }
-  
-  .line {
-    height: 2px;
-    background: black;
-    flex-grow: 1;
-    width: 100px;
-  }
-  
-  h2 {
-    font-size: 24px;
-    font-weight: 400;
-    color: #7d4f50;
-  }
-  
-  .footpart button {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 26px;
-    border: none;
-    background-color: white;
-    color: #7d4f50;
-    text-decoration: underline;
-    margin-top: 5px;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f7f3f5;
+  border-radius: 11px;
+}
+
+.process-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+}
+
+.process-icon {
+  background-color: #7d4f50;
+  border-radius: 50%;
+  width: 182px;
+  height: 182px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.process-step:first-child .process-icon:before {
+  display: none;
+}
+
+.process-icon img {
+  width: 50%;
+}
+
+.process-text {
+  color: #7d4f50;
+  font-size: 700;
+  font-size: 20px;
+  text-align: center;
+}
+
+.line {
+  height: 2px;
+  background: black;
+  flex-grow: 1;
+  width: 100px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+  color: #7d4f50;
+}
+
+.footpart button {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  border: none;
+  background-color: white;
+  color: #7d4f50;
+  text-decoration: underline;
+  margin-top: 5px;
+}
