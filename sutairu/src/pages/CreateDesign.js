@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import pull from "../images/pull.jpg";
 import swipe from "../icons/swipe.svg";
 import share from "../icons/share.svg";
+import ThreeScene from '../components/three';
 
 import "./createdesign.css";
 function CreateDesign() {
@@ -24,7 +25,7 @@ function CreateDesign() {
     <div class="container">
       <div class="left-part">
         <h2>Créer votre design</h2>
-        <img src={pull} className="pullImg" alt="Descriptive Alt Text" />
+        <ThreeScene/>
         <div class="button-container">
           <button>
             <img src={swipe} alt="swipe" />

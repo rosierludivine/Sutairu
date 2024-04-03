@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense} from "react";
 import imgHomePage from "../images/imgHomePage.jpg";
 import "./home.css";
+import ThreeScene from '../components/three';
+
+
 
 function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -30,9 +33,10 @@ function HomePage() {
           </a>
         </div>
 
-        <div className="image">
-          <img className="imgTag" src={imgHomePage} alt="HomePage" />
+        <div className="img-three">
+          <ThreeScene/>
         </div>
+        
       </div>
 
       {/* Second part */}
