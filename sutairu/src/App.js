@@ -11,9 +11,11 @@ import MyProfile from "./pages/MyProfile";
 import MonColis from "./pages/MonColis";
 import MonPanier from "./pages/MonPanier";
 import MesCommandes from "./pages/MesCommandes";
+import "./app.css";
 
 function App() {
   return (
+    <div>
       <Header>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -27,6 +29,7 @@ function App() {
           <Route path="/mescommandes" element={<MesCommandes />} />
         </Routes>
       </Header>
+    </div>
   );
 }
 

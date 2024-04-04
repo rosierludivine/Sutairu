@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import pull from "../images/pull.jpg";
+//import pull from "../images/pull.jpg";
 import swipe from "../icons/swipe.svg";
 import share from "../icons/share.svg";
 import ThreeScene from '../components/three';
@@ -25,7 +25,9 @@ function CreateDesign() {
     <div class="container">
       <div class="left-part">
         <h2>Créer votre design</h2>
-        <ThreeScene/>
+        <div className="img-scene">
+          <ThreeScene/>
+        </div>
         <div class="button-container">
           <button>
             <img src={swipe} alt="swipe" />

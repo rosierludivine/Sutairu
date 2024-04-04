@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import image2 from "../images/image2.jpg";
 import "./inscription.css";
 function Connection() {

@@ -7,19 +7,18 @@ Source: https://sketchfab.com/3d-models/hoodie-with-hood-up-237449b193714dfaa13b
 Title: Hoodie with hood up
 */
 
-import React, { useRef } from 'react'
+import React from 'react'
 import { useGLTF } from '@react-three/drei';
-import { Vector3 } from 'three';
 
 export default function Model(props) {
   const { nodes, materials } = useGLTF('/img.gltf');
   return (
-    <group {...props} dispose={null} scale={3}>
+    <group {...props} dispose={null} scale={4}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
-        <mesh geometry={nodes.Object_2.geometry} material={materials['Material238904.005']} position={[0, 0, 0]} />
-        <mesh geometry={nodes.Object_3.geometry} material={materials['Material238904.005']} />
-        <mesh geometry={nodes.Object_4.geometry} material={materials['Material238904.005']} />
-        <mesh geometry={nodes.Object_5.geometry} material={materials['Material238904.005']} />
+        <mesh geometry={nodes.Object_2.geometry} material={materials['Material238904.005']} position={[0, 0, -1.5]} />
+        <mesh geometry={nodes.Object_3.geometry} material={materials['Material238904.005']} position={[0, 0, -1.5]}/>
+        <mesh geometry={nodes.Object_4.geometry} material={materials['Material238904.005']} position={[0, 0, -1.5]}/>
+        <mesh geometry={nodes.Object_5.geometry} material={materials['Material238904.005']} position={[0, 0, -1.5]}/>
       </group>
     </group>
   )

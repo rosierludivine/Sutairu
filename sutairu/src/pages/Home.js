@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Suspense} from "react";
-import imgHomePage from "../images/imgHomePage.jpg";
+import React, { useState, useEffect} from "react";
+// import imgHomePage from "../images/imgHomePage.jpg";
 import "./home.css";
 import ThreeScene from '../components/three';
 
