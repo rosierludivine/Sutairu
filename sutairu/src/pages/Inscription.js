@@ -30,7 +30,7 @@ function Inscription() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/inscription', {
+      const response = await axios.post('http://localhost:3000/inscription', {
           name,
           prenom,
           email,
