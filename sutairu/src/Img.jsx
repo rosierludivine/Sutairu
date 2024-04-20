@@ -13,7 +13,7 @@ import { useGLTF } from '@react-three/drei';
 export default function Model(props) {
   const { nodes, materials } = useGLTF('/img.gltf');
   return (
-    <group {...props} dispose={null} scale={4}>
+    <group {...props} dispose={null} scale={6}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <mesh geometry={nodes.Object_2.geometry} material={materials['Material238904.005']} position={[0, 0, -1.5]} />
         <mesh geometry={nodes.Object_3.geometry} material={materials['Material238904.005']} position={[0, 0, -1.5]}/>

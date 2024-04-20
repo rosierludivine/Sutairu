@@ -40,7 +40,7 @@ function HomePage() {
       </div>
 
       {/* Second part */}
-      <div className="parent">
+      <div className="parent2">
         {/* Carousel container */}
         <div className="container">
           <div

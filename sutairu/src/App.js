@@ -11,7 +11,6 @@ import MyProfile from "./pages/MyProfile";
 import MonColis from "./pages/MonColis";
 import MonPanier from "./pages/MonPanier";
 import MesCommandes from "./pages/MesCommandes";
-import "./app.css";
 
 function App() {
   return (

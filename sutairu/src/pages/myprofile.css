@@ -1,14 +1,17 @@
 .profile-container {
     margin: 0 auto;
     /* padding: 20px; */
-    max-height: 100vh;
+    /* height: 100vh; */
     overflow: hidden;
+    padding-left: 5%;
+    padding-right: 5%;
   }
   
   .row {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    
   }
   
   .info-card,

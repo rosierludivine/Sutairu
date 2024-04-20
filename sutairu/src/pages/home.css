@@ -9,7 +9,7 @@
 } */
 
 .mainDiv {
-    max-height: 100vh;
+    height: 100vh;
     overflow: hidden;
   }
   .parent {
@@ -18,10 +18,27 @@
     justify-content: center; /* Keep as is if you still want to center the children horizontally */
     gap: 80px;
     width: 90%;
-    padding: 50px 0;
+    padding-top: 50px;
+    /* padding-bottom: 0; */
+  }
+
+  .parent2 {
+    display: flex;
+    align-items: flex-start; /* This will ensure the children start from the beginning vertically */
+    justify-content: center; /* Keep as is if you still want to center the children horizontally */
+    gap: 80px;
+    width: 90%;
+    padding-top: 4%;
+    /* padding-bottom: 0; */
   }
   
   .parent .child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .parent2 .child {
     display: flex;
     flex-direction: column;
     align-items: center;

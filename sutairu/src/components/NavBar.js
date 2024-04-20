@@ -33,7 +33,7 @@ function Navbar({ name }) {
     h1: {
       color: "#7D4F50",
       fontWeight: 400,
-      fontSize: "64px",
+      fontSize: "40px",
     },
     rightElements: {
       display: "flex",
