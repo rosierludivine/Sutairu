@@ -28,12 +28,12 @@ function Navbar({ name }) {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      height: "90px",
+      height: "70px",
     },
-    h1: {
+    nameOfSite: {
       color: "#7D4F50",
       fontWeight: 400,
-      fontSize: "40px",
+      fontSize: "30px",
     },
     rightElements: {
       display: "flex",
@@ -59,16 +59,20 @@ function Navbar({ name }) {
       margin: "10px 0", // Example spacing, adjust as needed
       fontSize: "16px", // Adjust as needed
     },
+    logo: {
+      width: "40px",
+      padding: "40px"
+    }
   };
 
   return (
     <div style={style.parent}>
       <a href="/">
-        <img src={logo} alt="logo" />
+        <img src={logo} style={style.logo} alt="logo" />
       </a>
-      <h2 style={style.h1}>{name}</h2>
+      <p style={style.nameOfSite}>{name}</p>
       <div style={style.rightElements}>
-        <img src={burger} alt="burger" onClick={toggleMenu} />
+        <img src={burger} style={style.logo} alt="burger" onClick={toggleMenu} />
       </div>
       <div ref={menuRef} style={style.menu}>
         {isMenuOpen && (

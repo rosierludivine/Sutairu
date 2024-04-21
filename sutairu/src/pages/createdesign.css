@@ -6,7 +6,6 @@
     padding-top: 50px;
   }
   
-  .left-part,
   .right-part {
     flex: 1; /* This makes both divs take up equal space */
     display: flex;
@@ -14,10 +13,10 @@
     align-items: center;
   }
   
-  .left-part {
-    /* width: 50%;
-    aspect-ratio: 88 / 100; */
-  }
+  /* .left-part {
+    width: 50%;
+    aspect-ratio: 88 / 100;
+  } */
   .button-container {
     display: flex;
     justify-content: center;

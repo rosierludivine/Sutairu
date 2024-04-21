@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "./mesdesign.css";
 import pull from "../images/pull.jpg";
 import CardItemCommandes from "../components/CardItemCommandes";
+import { countries } from "countries-list";
 
 function MesCommandes() {
-  const CardItems = [
+  const CardItemsCommmande = [
     {
       id: 1,
       name: "Product 1",
@@ -68,12 +69,17 @@ function MesCommandes() {
 //     setIsModalVisible(false);
 //   };
 
+  const countryOptions = Object.keys(countries).map((code) => ({
+    code,
+    name: countries[code].name,
+  }));
+
   return (
     <div className="container">
       <div className="child">
         <h1>Les Articles</h1>
-        <div className="cartsPart">
-          {CardItems.map((item) => (
+        <div className="cartsPart" style={{width: "100%"}}>
+          {CardItemsCommmande.map((item) => (
             <CardItemCommandes key={item.id} item={item} />
           ))}
         </div>
@@ -91,23 +97,26 @@ function MesCommandes() {
         </div>
         <form>
           <div class="form-group">
-            <label for="card-number">Numéro de Carte :</label>
-            <input type="text" id="card-number" placeholder="Votre nom" />
+            <label for="card-number" class="card-text">Numéro de Carte :</label>
+            <input type="text" id="card-number" class="placeholder" placeholder="Votre nom" />
           </div>
           <div class="form-group">
-            <label for="expiration">Expiration :</label>
-            <input type="text" id="expiration" placeholder="Votre expiration" />
+            <label for="expiration" class="card-text">Expiration :</label>
+            <input type="text" id="expiration" class="placeholder" placeholder="Votre expiration" />
           </div>
           <div class="form-group">
-            <label for="cvc">CVC :</label>
-            <input type="text" id="cvc" placeholder="Votre CVC" />
+            <label for="cvc" class="card-text">CVC :</label>
+            <input type="text" id="cvc"  class="placeholder"placeholder="Votre CVC" />
           </div>
           <div class="form-group">
-            <label for="country">Pays :</label>
-            <select id="country">
-              <option>Liste pays</option>
-              <option>France</option>
-              <option>Espagne</option>
+            <label for="country" class="card-text">Pays :</label>
+            <select id="country" class="country">
+              <option value="">Sélectionnez un pays</option>
+              {countryOptions.map((country) => (
+                <option key={country.code} value={country.code}>
+                  {country.name}
+                </option>
+              ))}
             </select>
           </div>
           <button type="button" onClick={showModal}>

@@ -69,7 +69,7 @@ function Inscription() {
         </div>
         <div class="input-group">
           <label for="text">Date de naissance :</label>
-          <input type="text" id="text" />
+          <input type="date" id="date_naissance" name="date_naissance" placeholder="jj/mm/aaaa"/>
         </div>
         <button type="button" onClick={showModal}>
           CRÉER MON COMPTE
