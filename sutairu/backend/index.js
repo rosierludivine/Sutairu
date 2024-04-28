@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./routes/userRoute.js";
+import inscriptionRoutes from "./routes/inscriptionRoutes.js";
 
 const app = express();
 const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/?retryWrites=true&w=majority&appName=Sutairu";
@@ -21,6 +22,9 @@ async function connectToDatabase() {
         console.log("connected to Mongodb");
         
         app.use("/users",userRouter);
+
+        app.use("/inscription", inscriptionRoutes);
+
         app.listen(5000, ()=> {
             console.log("Server is running on port 5000")
         });
@@ -28,5 +32,7 @@ async function connectToDatabase() {
         console.error('Erreur connecting to MongoDB :', error);
     }
 }
+
+
 
 connectToDatabase(); // Appel de la fonction pour se connecter à la base de données

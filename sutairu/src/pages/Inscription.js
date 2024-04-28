@@ -6,12 +6,17 @@ import axios from 'axios';
 import image2 from "../images/image2.jpg";
 import "./inscription.css";
 function Inscription() {
-  const [name, setName] = useState("");
-  const [prenom, setPrenom] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  
+
+  // Valeur des champs qui vont etre demander lors de l'inscription 
+  //Valeur par default 
+  const [values, setValues] = useState({
+    name: '', 
+    prenom:'', 
+    email: '',
+    password:'', 
+    dateOfBirth:''
+  })
+
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Function to toggle the modal's visibility
@@ -26,27 +31,34 @@ function Inscription() {
 
   const navigate = useNavigate(); // Hook to access navigate function
 
-  const handleOnSubmitInscription = async (e) => {
-    e.preventDefault();
+  // const handleOnSubmitInscription = async (e) => {
+  //   e.preventDefault();
 
-    try {
-      const response = await axios.post('http://localhost:3000/inscription', {
-          name,
-          prenom,
-          email,
-          password,
-          dateOfBirth
-        });
-        console.log('User created:', response.data);
-        // Traiter la réponse ici, par exemple mettre à jour l'état du composant
-      } catch (error) {
-        console.error('Error creating user:', error);
-        // Gérer l'erreur ici, par exemple afficher un message d'erreur à l'utilisateur
-      }
-    };
-
+  //   try {
+  //     const response = await axios.post('http://localhost:3000/inscription', {
+  //         name,
+  //         prenom,
+  //         email,
+  //         password,
+  //         dateOfBirth
+  //       });
+  //       console.log('User created:', response.data);
+  //       // Traiter la réponse ici, par exemple mettre à jour l'état du composant
+  //     } catch (error) {
+  //       console.error('Error creating user:', error);
+  //       // Gérer l'erreur ici, par exemple afficher un message d'erreur à l'utilisateur
+  //     }
+  //   };
+    const handleSubmit = (event) => {
+      console.log(values); 
+      event.preventDefault();
+      axios.post('http://localhost:5000/inscription', values)
+      .then(res => console.log(res))
+      .then(err => console.log(err));
+    }
 
   return (
+    <form onSubmit={handleSubmit}>
     <div class="container">
       <div class="image-section">
         <img src={image2} alt="image2" />
@@ -55,30 +67,30 @@ function Inscription() {
         <h2>INSCRIPTION</h2>
         <div class="input-group">
           <label htmlFor="name">Nom:</label>
-          <input type="text" placeholder="name"
-          value={name} onChange={(e) => setName(e.target.value)} />
-        </div>
+          <input type="text" placeholder="Enter name" name='name'
+          onChange={e => setValues({...values, name: e.target.value})} />
+        </div> 
         <div class="input-group">
           <label htmlFor="surname">Prénom :</label>
-          <input type="text" id="surname" 
-          value={prenom} onChange={(e) => setPrenom(e.target.value)}/>
+          <input type="text" id="surname" name='prenom'
+          onChange={e => setValues({...values, prenom: e.target.value})} />
         </div>
         <div class="input-group">
           <label htmlFor="email">Email :</label>
-          <input type="email" id="email" 
-          value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="email" id="email" name='email'
+          onChange={e => setValues({...values, email: e.target.value})} />
         </div>
         <div class="input-group">
           <label htmlFor="password">Mot de passe :</label>
-          <input type="password" id="password"
-          value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" id="password" name='password'
+          onChange={e => setValues({...values, password: e.target.value})} />
         </div>
         <div class="input-group">
           <label htmlFor="text">Date de naissance :</label>
-          <input type="date" id="text" 
-          value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)}/>
+          <input type="date" id="text" name='dateOfBirth'
+          onChange={e => setValues({...values, dateOfBirth: e.target.value})} />
         </div>
-        <button type="button" onClick={handleOnSubmitInscription}>
+        <button type="submit" >
           CRÉER MON COMPTE
         </button>
         {/* {isModalVisible && (
@@ -109,6 +121,7 @@ function Inscription() {
         </div>
       </div>
     </div>
+    </form>
   );
 }
 
