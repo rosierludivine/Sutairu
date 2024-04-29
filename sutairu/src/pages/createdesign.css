@@ -1,6 +1,7 @@
 .container {
     display: flex;
     justify-content: space-between;
+    margin-top: 4%;
   }
   .right-part {
     padding-top: 50px;
@@ -26,7 +27,7 @@
   .right-part input {
     border-radius: 8px;
     background: #f7f3f5;
-    color: #7d4f50;
+    color: #000000;
     font-weight: 400;
     font-size: 20px;
     margin: 5px 0; /* Adjust spacing between inputs */
@@ -34,7 +35,7 @@
     width: 90%; /* Adjust input width as needed */
   }
   .price {
-    color: #7d4f50;
+    color: #000000;
   }
   .price :nth-child(1) {
     font-weight: bold;
@@ -56,14 +57,15 @@
   .right-part input {
     border: none; /* Remove borders from inputs */
     border-radius: 8px;
-    background: #f7f3f5;
-    color: #7d4f50;
+    background: white;
+    color: #000000;
     font-weight: 400;
     font-size: 20px;
     margin: 5px 0;
     padding: 10px;
     padding-right: 30px; /* Add padding to accommodate the icon */
     width: 90%;
+    border: #0E4A65  solid 1px;
   }
   
   /* Apply the icon to all inputs except the first one */
@@ -101,7 +103,7 @@
   }
   
   .right-part input::placeholder {
-    color: #7d4f50;
+    color: #000000;
     opacity: 1;
   }
   
@@ -111,8 +113,8 @@
   .add-to-basket,
   .sauvgarder {
     background-color: white;
-    color: #7d4f50;
-    border: 3px solid #7d4f50;
+    color: #000000;
+    border: 3px solid #0E4A65;
     min-width: 250px;
   }
   
@@ -122,11 +124,12 @@
     background-color: white;
     margin-top: 0;
     font-weight: 500;
+    margin-left: 120px;
   }
   
   h2 {
     font-weight: 400;
-    color: "#7D4F50";
+    color: "#7d4f50";
     font-size: 36px;
     line-height: 48px;
   }
@@ -138,5 +141,8 @@
   .pullImg {
     width: 40%;
     height: 40%;
+  }
+  .create-design {
+    color: #000000;
   }
   

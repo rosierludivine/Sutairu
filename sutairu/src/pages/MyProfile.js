@@ -64,7 +64,9 @@ export default function MyProfile() {
           <p><input type="password" placeholder="Nouveau mot de passe" /></p>
           <button className="btn">Sauvegarder</button>
         </div>
-        <button className='deco_btn'>Déconnexion</button>
+        <div className='profile_label'>
+          <button className='deco_btn'>Déconnexion</button>
+        </div>
       </div>
     </div>
   </div>

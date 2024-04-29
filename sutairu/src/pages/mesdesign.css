@@ -5,8 +5,8 @@
   }
   .CardItem {
     /* border: solid #7d4f50; */
-    background-color: #f7f3f5;
-    border: 2px solid #7d4f50;
+    background-color: #f1f1f1;
+    border: 2px solid #0E4A65;
   }
   
   .CardItem img {
@@ -86,7 +86,7 @@
   }
   
   p {
-    color: #7d4f50;
+    color: black;
     font-weight: 400;
   }
   .productName {
@@ -106,12 +106,13 @@
     display: flex;
     flex-direction: row;
   }
-  .container .child {
+  .articles {
     width: 100%;
     flex: 1;
     padding-left: 5%;
   }
-  .child :nth-child(1) {
+
+  .articles :nth-child(1) {
     min-width: 100px;
   }
   
@@ -121,7 +122,7 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
-    margin-top: 6%;
+    margin-top: 3%;
     margin-right: 5%;
   }
   
@@ -129,14 +130,14 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    background-color: #cfc3c3;
+    background-color: #AEB9C4;
   }
   
   .option {
-    background: #cfc3c3;
+    background: #AEB9C4;
     border: none;
     cursor: pointer;
-    color: #7d4f50;
+    color: black;
     margin-top: 0;
   }
   
@@ -153,10 +154,16 @@
 
   .country{
     height: 35px;
+    margin-left: 20px;
   }
   
+  .butt-paye {
+    background-color: #0E4A65;
+  }
   .card-text {
     text-align: left;
+    color: #000000;
+    font-size: large;
   }
   .placeholder {
     margin-left: 20px;
@@ -169,14 +176,14 @@
   }
   
   .pay-button {
-    background-color: #cfc3c3;
+    background-color: #0E4A65;
     border: none;
     padding: 10px;
     width: 30%;
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
-    color: #000000;
+    color: white;
     font-weight: bold;
     margin-left: 20%;
   }
@@ -189,13 +196,13 @@
     font-size: 20px;
     line-height: 31px;
     font-weight: 700;
-    color: #7d4f50;
+    color: #000000;
     text-decoration: underline;
   }
   
   .ajouterBtn {
     background-color: transparent;
-    color: #7d4f50;
+    color: black;
     margin-top: 0;
     padding-right: 60px;
   }
@@ -215,18 +222,18 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 25px;
-    border: 2px solid #7d4f50;
+    border: 2px solid #0E4A65;
     margin-top: 0;
     min-width: 250px;
     margin-right: 20%;
   }
   
   .commanderBtn {
-    color: #7d4f50;
-    font-weight: 600;
+    color: black;
+    font-weight: 400;
     font-size: 20px;
     line-height: 25px;
-    border: 3px solid #7d4f50;
+    border: 2px solid #0E4A65;
     margin-top: 0;
     min-width: 250px;
     margin-right: 20%;
@@ -235,5 +242,9 @@
   .cartsPart {
     max-height: 400px;
     overflow-y: scroll;
+  }
+
+  .card {
+    margin-top: 4%;
   }
   

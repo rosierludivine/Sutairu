@@ -1,6 +1,6 @@
 .profile_page_container{
   height: calc(100vh - 2em);
-  background-color: #cfcdcd;
+  background-color: #dddfe2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,6 +51,11 @@
     font-size: small;
     margin-top: 1px;
     margin-left: 60%;
+    background-color: #0E4A65;
+  }
+
+  .deco_btn {
+    background-color: #0E4A65;
   }
 
   input[type=notif] {

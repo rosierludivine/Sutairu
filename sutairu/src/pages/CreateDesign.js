@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import swipe from "../icons/swipe.svg";
 import share from "../icons/share.svg";
 import ThreeScene from '../components/three';
+import { ChromePicker } from "react-color";
 
 import "./createdesign.css";
-function CreateDesign() {
+export default function CreateDesign() {
   const navigate = useNavigate(); // Hook to access navigate function
 
   const redirecttoPanier = () => {
@@ -21,10 +22,23 @@ function CreateDesign() {
   const tailleInputClicked = () => {
     setBtnClicked(!btnClicked);
   };
+
+  const [color, setColor] = useState("#ffffff"); // État pour stocker la couleur sélectionnée
+  const [showColorPicker, setShowColorPicker] = useState(false); // État pour contrôler l'affichage du sélecteur de couleurs
+  const openColorPicker = () => {
+    setShowColorPicker(true);
+  };
+  
+  const closeColorPicker = () => {
+    setShowColorPicker(false);
+  };
+  const handleColorChange = (newColor) => {
+    setColor(newColor.hex);
+  };
   return (
     <div class="container">
       <div class="left-part">
-        <h2>Créer votre design</h2>
+        <h2 className="create-design">Créer votre design</h2>
         <div className="img-scene">
           <ThreeScene/>
         </div>
@@ -60,7 +74,20 @@ function CreateDesign() {
           ""
         )}
 
-        <input type="text" placeholder="Couleur" />
+        <input
+          type="text"
+          placeholder="Couleur"
+          onClick={openColorPicker}
+          value={color}
+          readOnly
+        />
+
+        {showColorPicker && (
+          <div style={{ position: "absolute", zIndex: "2" }}>
+            <ChromePicker color={color} onChange={handleColorChange} />
+            <button onClick={closeColorPicker}>Fermer</button>
+          </div>
+        )}
         <input type="text" placeholder="Texte" />
         <input type="text" placeholder="Logo" />
         <input type="text" placeholder="Motif" />
@@ -79,5 +106,3 @@ function CreateDesign() {
     </div>
   );
 }
-
-export default CreateDesign;

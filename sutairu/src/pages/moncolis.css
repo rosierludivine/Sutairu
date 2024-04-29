@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #f7f3f5;
+    background-color: #f1f1f1;
     border-radius: 11px;
     width: 70%;
     margin-left: auto;
@@ -19,7 +19,7 @@
   }
   
   .process-icon {
-    background-color: #7d4f50;
+    background-color: #0E4A65;
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -38,7 +38,7 @@
   }
   
   .process-text {
-    color: #7d4f50;
+    color: black;
     font-size: 700;
     font-size: 20px;
     text-align: center;
@@ -64,6 +64,7 @@
     margin-bottom: 40px;
     font-size: 20px;
     font-weight: 700;
+    color: black;
   }
   
   .footpart button {
@@ -75,7 +76,7 @@
     line-height: 26px;
     border: none;
     background-color: white;
-    color: #7d4f50;
+    color: black;
     text-decoration: underline;
     margin-top: 5px;
     margin-left: 13%;

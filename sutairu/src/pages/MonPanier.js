@@ -44,7 +44,7 @@ function MonPanier() {
   };
 
   return (
-    <div>
+    <div className="card">
       {CardItems.map((item) => (
         <CardItem key={item.id} item={item} />
       ))}

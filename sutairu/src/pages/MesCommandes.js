@@ -76,7 +76,7 @@ function MesCommandes() {
 
   return (
     <div className="container">
-      <div className="child">
+      <div className="articles">
         <h1>Les Articles</h1>
         <div className="cartsPart" style={{width: "100%"}}>
           {CardItemsCommmande.map((item) => (
@@ -105,7 +105,7 @@ function MesCommandes() {
             <input type="text" id="expiration" class="placeholder" placeholder="Votre expiration" />
           </div>
           <div class="form-group">
-            <label for="cvc" class="card-text">CVC :</label>
+            <label for="cvc" class="card-text">CVC : </label>
             <input type="text" id="cvc"  class="placeholder"placeholder="Votre CVC" />
           </div>
           <div class="form-group">
@@ -119,8 +119,8 @@ function MesCommandes() {
               ))}
             </select>
           </div>
-          <button type="button" onClick={showModal}>
-            PAYER
+          <button type="button"  className="butt-paye" onClick={showModal}>
+            Payer
           </button>
           {isModalVisible && (
             <div>

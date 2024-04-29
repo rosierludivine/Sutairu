@@ -44,18 +44,21 @@ function HomePage() {
         {/* Carousel container */}
         <div className="container">
           <div
+            style={{background: "#0E4A65"}}
             className={`slide ${currentSlide === 0 ? "active" : ""}`}
             id="slide1"
           >
             PANTALON
           </div>
           <div
+            style={{background: "#0E4A65"}}
             className={`slide ${currentSlide === 1 ? "active" : ""}`}
             id="slide2"
           >
             CHAUSSETTE
           </div>
           <div
+            style={{background: "#0E4A65"}}
             className={`slide ${currentSlide === 2 ? "active" : ""}`}
             id="slide3"
           >
