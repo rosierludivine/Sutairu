@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import pull from "../images/pull.jpg";
 import swipe from "../icons/swipe.svg";
 import share from "../icons/share.svg";
 import ThreeScene from '../components/three';
-import { ChromePicker } from "react-color";
-
+import { CirclePicker  } from "react-color";
 import "./createdesign.css";
+
 export default function CreateDesign() {
   const navigate = useNavigate(); // Hook to access navigate function
+  const [selectedSize, setSelectedSize] = useState("");
 
   const redirecttoPanier = () => {
     navigate("/monpanier"); // Change the URL to '/login'
@@ -28,10 +28,15 @@ export default function CreateDesign() {
   const openColorPicker = () => {
     setShowColorPicker(true);
   };
+
+  const handleSizeSelection = (size) => {
+    setSelectedSize(size);
+  };
   
   const closeColorPicker = () => {
     setShowColorPicker(false);
   };
+
   const handleColorChange = (newColor) => {
     setColor(newColor.hex);
   };
@@ -40,7 +45,7 @@ export default function CreateDesign() {
       <div class="left-part">
         <h2 className="create-design">Créer votre design</h2>
         <div className="img-scene">
-          <ThreeScene/>
+        <ThreeScene color={color} setColor={setColor} />
         </div>
         <div class="button-container">
           <button>
@@ -53,22 +58,22 @@ export default function CreateDesign() {
       </div>
       <div class="right-part">
         <input type="text" placeholder="Nom" />
-        <input onClick={tailleInputClicked} type="text" placeholder="Taille" />
+        <input onClick={tailleInputClicked} type="text" placeholder={selectedSize ? `${selectedSize}` : "Taille"} />
         {btnClicked ? (
-          <div class="button-row">
-            <button>XS</button>
-            <button>S</button>
-            <button>M</button>
+          <div className="button-row">
+            <button onClick={() => handleSizeSelection("XS")}>XS</button>
+            <button onClick={() => handleSizeSelection("S")}>S</button>
+            <button onClick={() => handleSizeSelection("M")}>M</button>
           </div>
         ) : (
           ""
         )}
 
         {btnClicked ? (
-          <div class="button-row">
-            <button>L</button>
-            <button>XL</button>
-            <button>XXL</button>
+          <div className="button-row">
+            <button onClick={() => handleSizeSelection("L")}>L</button>
+            <button onClick={() => handleSizeSelection("XL")}>XL</button>
+            <button onClick={() => handleSizeSelection("XXL")}>XXL</button>
           </div>
         ) : (
           ""
@@ -83,8 +88,8 @@ export default function CreateDesign() {
         />
 
         {showColorPicker && (
-          <div style={{ position: "absolute", zIndex: "2" }}>
-            <ChromePicker color={color} onChange={handleColorChange} />
+          <div style={{ Index: "1" }}>
+            <CirclePicker color={color} onChange={handleColorChange} />
             <button onClick={closeColorPicker}>Fermer</button>
           </div>
         )}
@@ -92,7 +97,7 @@ export default function CreateDesign() {
         <input type="text" placeholder="Logo" />
         <input type="text" placeholder="Motif" />
         <div class="price">
-          <span class="">Prix:</span>
+          <span class="">Prix : </span>
           <span>28,99€</span>
         </div>
         <button class="sauvgarder">Sauvgarde</button>
