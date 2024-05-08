@@ -1,5 +1,5 @@
 import express from "express";
-import userControllers from "../controllers/usersController.js";
+// import userControllers from "../controllers/usersController.js";
 
 const router = express.Router();
 
@@ -7,7 +7,7 @@ const router = express.Router();
 router.use(express.json());
 
 // Route pour gérer l'inscription des utilisateurs
-router.post('/', (req, res) => {
+router.post('/inscription', (req, res) => {
   const userData = {
     "login": req.body.name + '_' + req.body.prenom, // Création du login
     "email": req.body.email,
@@ -16,6 +16,7 @@ router.post('/', (req, res) => {
     "nom": req.body.name,
     "dateOfBirth": req.body.dateOfBirth
   };
+  console.log(userData); 
 
   // Enregistrement des données dans la base de données ou traitement supplémentaire ici
 

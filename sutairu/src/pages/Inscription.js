@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-
 import image2 from "../images/image2.jpg";
 import "./inscription.css";
 function Inscription() {
@@ -49,13 +48,34 @@ function Inscription() {
   //       // Gérer l'erreur ici, par exemple afficher un message d'erreur à l'utilisateur
   //     }
   //   };
-    const handleSubmit = (event) => {
-      console.log(values); 
-      event.preventDefault();
-      axios.post('http://localhost:5000/inscription', values)
-      .then(res => console.log(res))
-      .then(err => console.log(err));
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios({
+        method: 'POST',
+        url: 'http://localhost:3000/inscription',
+        data: values, // Inclure les données à envoyer dans la requête
+        headers: {
+          'Content-Type': 'application/json', // Spécifie le type de contenu comme JSON
+          // Ajoutez d'autres en-têtes personnalisés si nécessaire
+        }
+      });
+      console.log('User created:', response.data);
+      // Traiter la réponse ici, par exemple mettre à jour l'état du composant
+    } catch (error) {
+      console.error('Error creating user:', error);
+      // Gérer l'erreur ici, par exemple afficher un message d'erreur à l'utilisateur
     }
+  }
+
+
+      // event.preventDefault();
+      // console.log(values); 
+      // event.preventDefault();
+      // await axios.post('http://localhost:3000/users', values)
+      // .then(res => console.log(res))
+      // .then(err => console.log(err));
+    
 
   return (
     <form onSubmit={handleSubmit}>

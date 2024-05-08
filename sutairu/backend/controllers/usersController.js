@@ -1,7 +1,7 @@
 import Users from '../models/users.js';
 
 // Création d'un nouvel utilisateur
-const createUser = async (req, res) =>{
+const createUser = async (req, res, next) =>{
     const user = req.body; // Valeur entrée
     const newUser = new Users(user); 
     try {
@@ -11,6 +11,8 @@ const createUser = async (req, res) =>{
         res.status(409).json({ message: error.message });
     }
 };
+
+
 
 // Affiche tous les utilisateurs
 const getAllUsers = async (req, res) => {
