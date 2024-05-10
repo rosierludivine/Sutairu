@@ -1,12 +1,14 @@
+// connexionRoutes.js
+
 import express from "express";
-import userControllers from "../controllers/usersController.js";
+import connexionControllers from "../controllers/connexionController.js";
 
 const router = express.Router();
 
 // Middleware pour parser les requêtes JSON
 router.use(express.json());
 
-// Route pour gérer la connexion des utilisateurs
-router.post('/login', userControllers.loginUser);
+// Route pour gérer la création d'un nouvel utilisateur
+router.post('/users', connexionControllers.createUser);
 
 export default router;

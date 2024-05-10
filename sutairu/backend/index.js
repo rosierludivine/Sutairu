@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import userRouter from "./routes/userRoute.js";
 import inscriptionRoutes from "./routes/inscriptionRoutes.js";
+import connexionRoutes from "./routes/connexionRoutes.js";
+
+// Configuration Express
 
 const app = express();
 const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/?retryWrites=true&w=majority&appName=Sutairu";
@@ -25,6 +28,7 @@ async function connectToDatabase() {
 
         // app.use("/users", userRouter);
         app.use("/inscription", inscriptionRoutes);
+        app.use("/connection", connexionRoutes)
 
 
         app.listen(5000, ()=> {

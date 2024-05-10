@@ -1,4 +1,4 @@
-import Users from '../models/users.js';
+import Users from '../models/users.js'
 
 // Création d'un nouvel utilisateur
 const createUser = async (req, res, next) =>{
@@ -14,14 +14,14 @@ const createUser = async (req, res, next) =>{
 
 
 
-// Affiche tous les utilisateurs
-const getAllUsers = async (req, res) => {
-    try {
-        const users = await Users.find();
-        res.status(200).json(users);
-    } catch (error) {
-        res.status(404).json({ message: error.message });
-    }
-};
+// // Affiche tous les utilisateurs
+// const getAllUsers = async (req, res) => {
+//     try {
+//         const users = await Users.find();
+//         res.status(200).json(users);
+//     } catch (error) {
+//         res.status(404).json({ message: error.message });
+//     }
+// };
 
 export default { createUser };
