@@ -1,7 +1,7 @@
 import User from "../models/User.js";
+import bcrypt from "bcrypt";
 
 const userControllers = {
-  // Connexion de l'utilisateur
   async loginUser(req, res) {
     const { email, password } = req.body;
 
@@ -10,19 +10,20 @@ const userControllers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        return res.status(404).json({ message: "Utilisateur non trouvé" });
+        return res.status(404).json({ error: "Utilisateur non trouvé" });
       }
 
       // Vérifie si le mot de passe est correct
-      if (user.password !== password) {
-        return res.status(401).json({ message: "Mot de passe incorrect" });
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (!isPasswordValid) {
+        return res.status(401).json({ error: "Identifiants incorrects" });
       }
 
       // Authentification réussie
       return res.status(200).json({ message: "Connexion réussie", user });
     } catch (error) {
       console.error("Erreur lors de la connexion :", error);
-      return res.status(500).json({ message: "Erreur lors de la connexion" });
+      return res.status(500).json({ error: "Erreur lors de la connexion" });
     }
   },
 };
