@@ -68,8 +68,7 @@
     border: #0E4A65  solid 1px;
   }
   
-  /* Apply the icon to all inputs except the first one */
-  .right-part input:not(:first-of-type) {
+  .right-part input {
     background-image: url("../icons/arrowDown.svg");
     background-repeat: no-repeat;
     background-position: right 5px center;

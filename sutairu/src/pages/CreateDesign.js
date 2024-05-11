@@ -9,6 +9,7 @@ import "./createdesign.css";
 export default function CreateDesign() {
   const navigate = useNavigate(); // Hook to access navigate function
   const [selectedSize, setSelectedSize] = useState("");
+  const [selectedChoix, setSelectedChoix] = useState("Hoodie");
 
   const redirecttoPanier = () => {
     navigate("/monpanier"); // Change the URL to '/login'
@@ -18,9 +19,14 @@ export default function CreateDesign() {
     navigate("/mesdesigns"); // Change the URL to '/login'
   };
   const [btnClicked, setBtnClicked] = useState(false);
+  const [btnChoice, setBtnChoice] = useState(null);
 
   const tailleInputClicked = () => {
     setBtnClicked(!btnClicked);
+  };
+
+  const choixInputClicked = () => {
+    setBtnChoice(!btnChoice);
   };
 
   const [color, setColor] = useState("#ffffff"); // État pour stocker la couleur sélectionnée
@@ -31,6 +37,10 @@ export default function CreateDesign() {
 
   const handleSizeSelection = (size) => {
     setSelectedSize(size);
+  };
+
+  const handleChoixSelection = (choix) => {
+    setSelectedChoix(choix);
   };
   
   const closeColorPicker = () => {
@@ -45,7 +55,7 @@ export default function CreateDesign() {
       <div class="left-part">
         <h2 className="create-design">Créer votre design</h2>
         <div className="img-scene">
-        <ThreeScene color={color} setColor={setColor} />
+        <ThreeScene color={color} setColor={setColor} choice={selectedChoix}/>
         </div>
         <div class="button-container">
           <button>
@@ -57,7 +67,15 @@ export default function CreateDesign() {
         </div>
       </div>
       <div class="right-part">
-        <input type="text" placeholder="Nom" />
+        <input onClick={choixInputClicked} type="text" placeholder={selectedChoix ? `${selectedChoix}` : "Choix"}/>
+        {btnChoice ? (
+          <div className="button-row">
+            <button onClick={() => handleChoixSelection("Hoodie")}>Hoodie</button>
+            <button onClick={() => handleChoixSelection("T-shirt")}>T-shirt</button>
+          </div>
+        ) : (
+          ""
+        )}
         <input onClick={tailleInputClicked} type="text" placeholder={selectedSize ? `${selectedSize}` : "Taille"} />
         {btnClicked ? (
           <div className="button-row">
@@ -79,13 +97,7 @@ export default function CreateDesign() {
           ""
         )}
 
-        <input
-          type="text"
-          placeholder="Couleur"
-          onClick={openColorPicker}
-          value={color}
-          readOnly
-        />
+        <input type="text" placeholder="Couleur" onClick={openColorPicker} value={color} readOnly />
 
         {showColorPicker && (
           <div style={{ Index: "1" }}>
