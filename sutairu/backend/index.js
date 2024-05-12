@@ -1,12 +1,12 @@
 // Code  for mongoose config in backend
 // Filename - backend/index.js
- 
+
 // To connect with your mongoDB database
 
 const mongoose = require('mongoose');
 
 const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/?retryWrites=true&w=majority&appName=Sutairu";
- 
+
 async function connectToDatabase() {
     try {
         await mongoose.connect(uri, {
@@ -54,7 +54,7 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('users', UserSchema);
 User.createIndexes();
- 
+
 // For backend and express
 
 const express = require('express');
@@ -67,7 +67,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, resp) => {
- 
+
 
     resp.send("App is Working");
 
@@ -75,13 +75,13 @@ app.get("/", (req, resp) => {
 
     // entering http://loacalhost:5000
 
-     
+
 
     // If you see App is working means
 
     // backend working properly
 });
- 
+
 
 app.post("/register", async (req, resp) => {
 
@@ -106,7 +106,7 @@ app.post("/register", async (req, resp) => {
             console.log("User already register");
 
         }
- 
+
 
     } catch (e) {
 

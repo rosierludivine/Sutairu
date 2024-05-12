@@ -1,7 +1,7 @@
 import React from "react";
 import image2 from "../images/image2.jpg";
 import "./inscription.css";
-function Connection() {
+export default function Connection() {
   return (
     <div class="container">
       <div class="image-section">
@@ -31,5 +31,3 @@ function Connection() {
     </div>
   );
 }
-
-export default Connection;

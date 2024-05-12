@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 // import imgHomePage from "../images/imgHomePage.jpg";
 import "./home.css";
-import ThreeScene from '../components/three';
+import ThreeSceneHome from '../components/threeHome';
 
 
 
@@ -34,7 +34,7 @@ function HomePage() {
         </div>
 
         <div className="img-three">
-          <ThreeScene/>
+          <ThreeSceneHome/>
         </div>
         
       </div>
