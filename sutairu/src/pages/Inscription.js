@@ -4,6 +4,26 @@ import { useNavigate } from "react-router-dom";
 import image2 from "../images/image2.jpg";
 import "./inscription.css";
 function Inscription() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    let result = await fetch(
+      'http://localhost:5000/register', {
+      method: "post",
+      body: JSON.stringify({ name, email }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    result = await result.json();
+    console.warn(result);
+    if (result) {
+      alert("Data saved succesfully");
+      setEmail("");
+      setName("");
+    }
+  }
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Function to toggle the modal's visibility
@@ -31,7 +51,8 @@ function Inscription() {
         <h2>INSCRIPTION</h2>
         <div class="input-group">
           <label for="name">Nom:</label>
-          <input type="text" id="name" />
+          <input type="text" placeholder="name"
+          value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div class="input-group">
           <label for="surname">Prénom :</label>
@@ -39,7 +60,8 @@ function Inscription() {
         </div>
         <div class="input-group">
           <label for="email">Email :</label>
-          <input type="email" id="email" />
+          <input type="email" id="email" 
+          value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div class="input-group">
           <label for="password">Mot de passe :</label>
@@ -47,7 +69,7 @@ function Inscription() {
         </div>
         <div class="input-group">
           <label for="text">Date de naissance :</label>
-          <input type="text" id="text" />
+          <input type="date" id="date_naissance" name="date_naissance" placeholder="jj/mm/aaaa"/>
         </div>
         <button type="button" onClick={showModal}>
           CRÉER MON COMPTE

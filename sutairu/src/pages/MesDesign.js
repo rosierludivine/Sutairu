@@ -4,7 +4,7 @@ import "./mesdesign.css";
 import pull from "../images/pull.jpg";
 import CardItem from "../components/Carditem";
 
-function MesDesigns() {
+export default function MesDesigns() {
   const CardItems = [
     {
       id: 1,
@@ -43,7 +43,7 @@ function MesDesigns() {
   };
 
   return (
-    <div>
+    <div className="card">
       {CardItems.map((item) => (
         <CardItem key={item.id} item={item} />
       ))}
@@ -55,5 +55,3 @@ function MesDesigns() {
     </div>
   );
 }
-
-export default MesDesigns;

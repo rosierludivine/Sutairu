@@ -18,8 +18,8 @@ const CardItem = ({ item }) => {
         </div>
         <button className="ajouterBtn">Ajouter au panier</button>
         <div className="deleteIcon">
-          <img src={edit} alt="edit icon" />
-          <img src={deleteSvg} alt="delete icon" />
+          <img src={edit} alt="edit icon" style={{width: "25px", height:"auto"}}/>
+          <img src={deleteSvg} alt="delete icon" style={{width: "25px", height:"auto"}}/>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ import "./moncolis.css";
 function MonColis() {
   return (
     <div>
-      <h2>Suivre mon colis</h2>
+      <h2 class="titre">Suivre mon colis</h2>
       <div class="process-wrapper">
         <div class="process-step">
           <div class="process-icon">
