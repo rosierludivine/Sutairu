@@ -14,6 +14,7 @@ import MesCommandes from "./pages/MesCommandes";
 
 function App() {
   return (
+    <div>
       <Header>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -27,6 +28,7 @@ function App() {
           <Route path="/mescommandes" element={<MesCommandes />} />
         </Routes>
       </Header>
+    </div>
   );
 }
 

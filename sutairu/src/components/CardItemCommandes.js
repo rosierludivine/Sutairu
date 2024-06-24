@@ -1,18 +1,16 @@
 import React from "react";
 import "../pages/mesdesign.css";
+import "./cardItemCommandes.css";
 
 const CardItemCommandes = ({ item }) => {
   return (
-    <div className="CardItem">
-      <div className="leftSide">
+    <div className="CardItemCommandes">
+      <div className="leftSideCommandes">
         <img src={item.image} alt={item.name} />
-        <p className="productName">{item.name}</p>
-      </div>
-      <div className="rightSide">
-        <div className="sizePrice">
+        <p className="productNameCommandes">{item.name}</p>
+        <div className="sizePriceCommandes">
           <p>Price: ${item.price}</p>
-        </div>
-        
+        </div>  
       </div>
     </div>
   );

@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
-import imgHomePage from "../images/imgHomePage.jpg";
+import React, { useState, useEffect} from "react";
+// import imgHomePage from "../images/imgHomePage.jpg";
 import "./home.css";
+import ThreeSceneHome from '../components/threeHome';
+
+
 
 function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -30,28 +33,32 @@ function HomePage() {
           </a>
         </div>
 
-        <div className="image">
-          <img className="imgTag" src={imgHomePage} alt="HomePage" />
+        <div className="img-three">
+          <ThreeSceneHome/>
         </div>
+        
       </div>
 
       {/* Second part */}
-      <div className="parent">
+      <div className="parent2">
         {/* Carousel container */}
         <div className="container">
           <div
+            style={{background: "#0E4A65"}}
             className={`slide ${currentSlide === 0 ? "active" : ""}`}
             id="slide1"
           >
             PANTALON
           </div>
           <div
+            style={{background: "#0E4A65"}}
             className={`slide ${currentSlide === 1 ? "active" : ""}`}
             id="slide2"
           >
             CHAUSSETTE
           </div>
           <div
+            style={{background: "#0E4A65"}}
             className={`slide ${currentSlide === 2 ? "active" : ""}`}
             id="slide3"
           >

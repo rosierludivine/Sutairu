@@ -5,6 +5,26 @@ import axios from 'axios';
 import image2 from "../images/image2.jpg";
 import "./inscription.css";
 function Inscription() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    let result = await fetch(
+      'http://localhost:5000/register', {
+      method: "post",
+      body: JSON.stringify({ name, email }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    result = await result.json();
+    console.warn(result);
+    if (result) {
+      alert("Data saved succesfully");
+      setEmail("");
+      setName("");
+    }
+  }
 
   // Valeur des champs qui vont etre demander lors de l'inscription 
   //Valeur par default 
@@ -86,19 +106,17 @@ function Inscription() {
       <div class="inscription-section">
         <h2>INSCRIPTION</h2>
         <div class="input-group">
-          <label htmlFor="name">Nom:</label>
-          <input type="text" placeholder="Enter name" name='name'
-          onChange={e => setValues({...values, name: e.target.value})} />
-        </div> 
+          <label for="name">Nom:</label>
+          <input type="text" id="name" />
+        </div>
         <div class="input-group">
           <label htmlFor="surname">Prénom :</label>
           <input type="text" id="surname" name='prenom'
           onChange={e => setValues({...values, prenom: e.target.value})} />
         </div>
         <div class="input-group">
-          <label htmlFor="email">Email :</label>
-          <input type="email" id="email" name='email'
-          onChange={e => setValues({...values, email: e.target.value})} />
+          <label for="email">Email :</label>
+          <input type="email" id="email" />
         </div>
         <div class="input-group">
           <label htmlFor="password">Mot de passe :</label>
@@ -106,9 +124,8 @@ function Inscription() {
           onChange={e => setValues({...values, password: e.target.value})} />
         </div>
         <div class="input-group">
-          <label htmlFor="text">Date de naissance :</label>
-          <input type="date" id="text" name='dateOfBirth'
-          onChange={e => setValues({...values, dateOfBirth: e.target.value})} />
+          <label for="text">Date de naissance :</label>
+          <input type="text" id="text" />
         </div>
         <button type="submit" >
           CRÉER MON COMPTE

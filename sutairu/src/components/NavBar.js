@@ -28,12 +28,13 @@ function Navbar({ name }) {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      height: "90px",
+      height: "70px",
     },
-    h1: {
-      color: "#7D4F50",
+    nameOfSite: {
+      color: "#000000",
       fontWeight: 400,
-      fontSize: "64px",
+      fontSize: "30px",
+      fontFamily: "Pacifico",
     },
     rightElements: {
       display: "flex",
@@ -45,34 +46,46 @@ function Navbar({ name }) {
       top: 0,
       right: 0,
       width: "300px",
-      height: "100%",
+      height: "30%",
+      margin: "3% 3% 0% 0%",
       backgroundColor: "#fff",
       boxShadow: "-2px 0px 5px rgba(0,0,0,0.5)",
-      transform: isMenuOpen ? "translateX(0)" : "translateX(100%)",
+      transform: isMenuOpen ? "translateX(0)" : "translateX(120%)",
       transition: "transform 0.3s ease",
       padding: "20px",
     },
     menuItem: {
-      color: "#7D4F50", // Example styling, adjust as needed
+      color: "#0000000", // Example styling, adjust as needed
       textDecoration: "none", // Removes underline from links
       display: "block", // Makes the link behave like a block element
       margin: "10px 0", // Example spacing, adjust as needed
       fontSize: "16px", // Adjust as needed
     },
+    logo: {
+      width: "40px",
+      padding: "40px"
+    },
+    burger: {
+      width: "40px",
+      padding: "40px"
+    },
+    menuburger: {
+      margin: "%"
+    }
   };
 
   return (
     <div style={style.parent}>
       <a href="/">
-        <img src={logo} alt="logo" />
+        <img src={logo} style={style.logo} alt="logo" />
       </a>
-      <h2 style={style.h1}>{name}</h2>
+      <p style={style.nameOfSite}>{name}</p>
       <div style={style.rightElements}>
-        <img src={burger} alt="burger" onClick={toggleMenu} />
+        <img src={burger} style={style.burger} alt="burger" onClick={toggleMenu} />
       </div>
       <div ref={menuRef} style={style.menu}>
         {isMenuOpen && (
-          <div>
+          <div style={style.menuburger}>
             {/* Menu items go here */}
             <a href="/myprofile" style={style.menuItem}>
               Profile
