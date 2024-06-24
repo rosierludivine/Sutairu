@@ -9,7 +9,7 @@ function Connection() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/users/login", {
+      const response = await axios.post("http://localhost:5000/Sutairu/users", {
         email,
         password,
       });
@@ -52,7 +52,7 @@ function Connection() {
         <div className="text">
           Je n'ai pas de compte ?
           <strong>
-            <a href="/inscription">Inscription</a>
+            <a href="/inscription" to="/inscription">Inscription</a>
           </strong>
         </div>
         <div className="text">

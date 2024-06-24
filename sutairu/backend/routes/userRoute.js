@@ -8,7 +8,7 @@ const router = express.Router();
 router.use(express.json());
 
 // Route pour gérer l'inscription des utilisateurs
-router.post('/users', (req, res) => {
+router.post('/Sutairu/users', (req, res) => {
   const userData = {
     "login": req.body.name + '_' + req.body.prenom, // Création du login
     "email": req.body.email,

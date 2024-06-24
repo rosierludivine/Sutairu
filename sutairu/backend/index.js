@@ -27,7 +27,7 @@ async function connectToDatabase() {
         // Routes
 
         // app.use("/users", userRouter);
-        app.use("/inscription", inscriptionRoutes);
+        app.use("/users", inscriptionRoutes);
         app.use("/connection", connexionRoutes)
 
 
