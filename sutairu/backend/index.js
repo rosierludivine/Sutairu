@@ -6,7 +6,6 @@ import inscriptionRoutes from "./routes/inscriptionRoutes.js";
 import connexionRoutes from "./routes/connexionRoutes.js";
 
 // Configuration Express
-
 const app = express();
 const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/?retryWrites=true&w=majority&appName=Sutairu";
 
@@ -21,18 +20,16 @@ async function connectToDatabase() {
     try {
         app.use(express.json());
 
-        await mongoose.connect(uri); 
+        await mongoose.connect(uri);
         console.log("connected to Mongodb");
-        
+
         // Routes
+        app.use("/users", userRouter); // Assurez-vous que userRouter gère les routes correctement
+        app.use("/inscription", inscriptionRoutes); // Assurez-vous que inscriptionRoutes est défini correctement
+        app.use("/connexion", connexionRoutes); // Assurez-vous que connexionRoutes est défini correctement
 
-        // app.use("/users", userRouter);
-        app.use("/users", inscriptionRoutes);
-        app.use("/connection", connexionRoutes)
-
-
-        app.listen(5000, ()=> {
-            console.log("Server is running on port 5000")
+        app.listen(5000, () => {
+            console.log("Server is running on port 5000");
         });
     } catch (error) {
         console.error('Erreur connecting to MongoDB :', error);
