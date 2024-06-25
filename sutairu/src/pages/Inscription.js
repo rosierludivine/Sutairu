@@ -5,14 +5,14 @@ import axios from 'axios';
 import image2 from "../images/image2.jpg";
 import "./inscription.css";
 function Inscription() {
-  const [name, setName] = useState("");
+  const [nom, setNom] = useState("");
   const [email, setEmail] = useState("");
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     let result = await fetch(
       'http://localhost:5000/register', {
       method: "post",
-      body: JSON.stringify({ name, email }),
+      body: JSON.stringify({ nom, email }),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -22,14 +22,14 @@ function Inscription() {
     if (result) {
       alert("Data saved succesfully");
       setEmail("");
-      setName("");
+      setNom("");
     }
   }
 
   // Valeur des champs qui vont etre demander lors de l'inscription 
   //Valeur par default 
   const [values, setValues] = useState({
-    name: '', 
+    nom: '', 
     prenom:'', 
     email: '',
     password:'', 
@@ -50,52 +50,23 @@ function Inscription() {
 
   const navigate = useNavigate(); // Hook to access navigate function
 
-  // const handleOnSubmitInscription = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await axios.post('http://localhost:3000/inscription', {
-  //         name,
-  //         prenom,
-  //         email,
-  //         password,
-  //         dateOfBirth
-  //       });
-  //       console.log('User created:', response.data);
-  //       // Traiter la réponse ici, par exemple mettre à jour l'état du composant
-  //     } catch (error) {
-  //       console.error('Error creating user:', error);
-  //       // Gérer l'erreur ici, par exemple afficher un message d'erreur à l'utilisateur
-  //     }
-  //   };
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios({
-        method: 'POST',
-        url: 'http://localhost:3000/inscription',
-        data: values, // Inclure les données à envoyer dans la requête
+        method:'post',
+        url: 'http://localhost:5000/inscription',
+        data: values, // mettre les données a envoyer dans la requetes 
         headers: {
-          'Content-Type': 'application/json', // Spécifie le type de contenu comme JSON
-          // Ajoutez d'autres en-têtes personnalisés si nécessaire
+          'Content-Type': 'application/json',
         }
       });
       console.log('User created:', response.data);
-      // Traiter la réponse ici, par exemple mettre à jour l'état du composant
     } catch (error) {
       console.error('Error creating user:', error);
-      // Gérer l'erreur ici, par exemple afficher un message d'erreur à l'utilisateur
+      // Gérer les erreurs ici
     }
   }
-
-
-      // event.preventDefault();
-      // console.log(values); 
-      // event.preventDefault();
-      // await axios.post('http://localhost:3000/users', values)
-      // .then(res => console.log(res))
-      // .then(err => console.log(err));
-    
 
   return (
     <form onSubmit={handleSubmit}>
@@ -106,8 +77,9 @@ function Inscription() {
       <div class="inscription-section">
         <h2>INSCRIPTION</h2>
         <div class="input-group">
-          <label for="name">Nom:</label>
-          <input type="text" id="name" />
+          <label for="nom">Nom:</label>
+          <input type="text" id="nom" 
+          onChange={e => setValues({...values, nom: e.target.value})} />
         </div>
         <div class="input-group">
           <label htmlFor="surname">Prénom :</label>
@@ -116,7 +88,8 @@ function Inscription() {
         </div>
         <div class="input-group">
           <label for="email">Email :</label>
-          <input type="email" id="email" />
+          <input type="email" id="email" 
+          onChange={e => setValues({...values, email: e.target.value})} />
         </div>
         <div class="input-group">
           <label htmlFor="password">Mot de passe :</label>
@@ -125,7 +98,8 @@ function Inscription() {
         </div>
         <div class="input-group">
           <label for="text">Date de naissance :</label>
-          <input type="text" id="text" />
+          <input type="date" id="text" 
+          onChange={e => setValues({...values, dateOfBirth: e.target.value})} />
         </div>
         <button type="submit" >
           CRÉER MON COMPTE

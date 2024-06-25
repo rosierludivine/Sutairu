@@ -11,7 +11,7 @@ const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/?
 
 // Configuration CORS
 app.use(cors({
-  origin: 'http://localhost:3000', // Autoriser les requêtes depuis localhost:3000
+  origin: 'http://localhost:5000/inscription', // Autoriser les requêtes depuis localhost:3000
   methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -24,9 +24,9 @@ async function connectToDatabase() {
         console.log("connected to Mongodb");
 
         // Routes
-        app.use("/users", userRouter); // Assurez-vous que userRouter gère les routes correctement
-        app.use("/inscription", inscriptionRoutes); // Assurez-vous que inscriptionRoutes est défini correctement
-        app.use("/connexion", connexionRoutes); // Assurez-vous que connexionRoutes est défini correctement
+        app.use("/users", userRouter); 
+        app.use("/inscription", inscriptionRoutes); 
+        app.use("/connexion", connexionRoutes); 
 
         app.listen(5000, () => {
             console.log("Server is running on port 5000");

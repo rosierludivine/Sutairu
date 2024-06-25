@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import swipe from "../icons/swipe.svg";
 import share from "../icons/share.svg";
 import ThreeScene from '../components/three';
-import { CirclePicker  } from "react-color";
+import { CirclePicker } from "react-color";
 import "./createdesign.css";
 
 export default function CreateDesign() {
@@ -42,7 +42,7 @@ export default function CreateDesign() {
   const handleChoixSelection = (choix) => {
     setSelectedChoix(choix);
   };
-  
+
   const closeColorPicker = () => {
     setShowColorPicker(false);
   };
@@ -50,14 +50,15 @@ export default function CreateDesign() {
   const handleColorChange = (newColor) => {
     setColor(newColor.hex);
   };
+
   return (
-    <div class="container">
-      <div class="left-part">
+    <div className="container">
+      <div className="left-part">
         <h2 className="create-design">Créer votre design</h2>
         <div className="img-scene">
-        <ThreeScene color={color} setColor={setColor} choice={selectedChoix}/>
+          <ThreeScene color={color} setColor={setColor} choice={selectedChoix} />
         </div>
-        <div class="button-container">
+        <div className="button-container">
           <button>
             <img src={swipe} alt="swipe" />
           </button>
@@ -66,8 +67,12 @@ export default function CreateDesign() {
           </button>
         </div>
       </div>
-      <div class="right-part">
-        <input onClick={choixInputClicked} type="text" placeholder={selectedChoix ? `${selectedChoix}` : "Choix"}/>
+      <div className="right-part">
+        <input
+          onClick={choixInputClicked}
+          type="text"
+          placeholder={selectedChoix ? `${selectedChoix}` : "Choix"}
+        />
         {btnChoice ? (
           <div className="button-row">
             <button onClick={() => handleChoixSelection("Hoodie")}>Hoodie</button>
@@ -76,7 +81,11 @@ export default function CreateDesign() {
         ) : (
           ""
         )}
-        <input onClick={tailleInputClicked} type="text" placeholder={selectedSize ? `${selectedSize}` : "Taille"} />
+        <input
+          onClick={tailleInputClicked}
+          type="text"
+          placeholder={selectedSize ? `${selectedSize}` : "Taille"}
+        />
         {btnClicked ? (
           <div className="button-row">
             <button onClick={() => handleSizeSelection("XS")}>XS</button>
@@ -100,7 +109,7 @@ export default function CreateDesign() {
         <input type="text" placeholder="Couleur" onClick={openColorPicker} value={color} readOnly />
 
         {showColorPicker && (
-          <div style={{ Index: "1" }}>
+          <div style={{ zIndex: "1" }}>
             <CirclePicker color={color} onChange={handleColorChange} />
             <button onClick={closeColorPicker}>Fermer</button>
           </div>
@@ -108,20 +117,18 @@ export default function CreateDesign() {
         <input type="text" placeholder="Texte" />
         <input type="text" placeholder="Logo" />
         <input type="text" placeholder="Motif" />
-        <div class="price">
-          <span class="">Prix : </span>
+        <div className="price">
+          <span>Prix : </span>
           <span>28,99€</span>
         </div>
-        <button class="sauvgarder">Sauvgarde</button>
-        <button onClick={redirecttoMesDesigns} class="add-to-basket">
+        <button className="sauvgarder">Sauvgarde</button>
+        <button onClick={redirecttoMesDesigns} className="add-to-basket">
           Ajouter au panier
         </button>
-        <button onClick={redirecttoPanier} class="voir-le-panier">
+        <button onClick={redirecttoPanier} className="voir-le-panier">
           Voir le panier
         </button>
       </div>
     </div>
   );
 }
-
-export default CreateDesign;

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from 'axios';
 import image2 from "../images/image2.jpg";
 import "./inscription.css";
-export default 
-function Inscription() {
+
+function Connection() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -27,24 +27,38 @@ function Inscription() {
       <div className="image-section">
         <img src={image2} alt="image2" />
       </div>
-      <div class="inscription-section">
+      <div className="inscription-section">
         <h2>CONNEXION</h2>
-        <div class="input-group">
-          <label for="email">Email :</label>
-          <input type="email" id="email" />
-        </div>
-        <div class="input-group">
-          <label for="password">Password:</label>
-          <input type="password" id="password" />
-        </div>
-        <button type="button">CONNEXION</button>
-        <div class="text">
-          Je n’est pas de compte ?
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="email">Email :</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">CONNEXION</button>
+        </form>
+        <div className="text">
+          Je n’ai pas de compte ?
           <strong>
-            <a href="/inscription">Insciption</a>
+            <a href="/inscription">Inscription</a>
           </strong>
         </div>
-        <div class="text">
+        <div className="text">
           <strong>Mot de passe oublié</strong>
         </div>
       </div>
