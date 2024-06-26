@@ -4,25 +4,27 @@ import bcrypt from "bcrypt";
 
 const router = express.Router();
 
-router.post('/connexion', async (req, res) => {
+// Middleware pour parser les requêtes JSON
+router.use(express.json());
+
+// Route pour gérer la connexion des utilisateurs
+router.post('/connection', async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(`Tentative de connexion avec l'email: ${email}`); // Savoir avec quelle mail on essaye de ce connecter 
 
-
+    // Chercher l'utilisateur par email
     const user = await Users.findOne({ email });
     if (!user) {
-      console.log("Utilisateur non trouvé"); // Log user not found
-      return res.status(401).json({ message: "Email ou mot de passe incorrect" });
+      return res.status(401).json({ message: "Email ou mot de passe incorrect." });
     }
 
+    // Comparer le mot de passe
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      console.log("Mot de passe incorrect"); // Log incorrect password
-      return res.status(401).json({ message: "Email ou mot de passe incorrect" });
+      return res.status(401).json({ message: "Email ou mot de passe incorrect." });
     }
 
-    console.log("Connexion réussie"); // Log successful login
+    // Connexion réussie
     res.status(200).json({ message: "Connexion réussie", user });
   } catch (error) {
     console.error("Erreur lors de la connexion :", error);
