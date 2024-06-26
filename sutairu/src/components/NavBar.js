@@ -87,16 +87,16 @@ function Navbar({ name }) {
         {isMenuOpen && (
           <div style={style.menuburger}>
             {/* Menu items go here */}
-            <a href="/myprofile" style={style.menuItem}>
+            <a href="/profile" style={style.menuItem}>
               Profile
             </a>
-            <a href="/mesdesigns" style={style.menuItem}>
+            <a href="/designs" style={style.menuItem}>
               Design
             </a>
-            <a href="/monpanier" style={style.menuItem}>
+            <a href="/panier" style={style.menuItem}>
               Panier
             </a>
-            <a href="/mescommandes" style={style.menuItem}>
+            <a href="/commandes" style={style.menuItem}>
               Commande
             </a>
             <a href="/" style={style.menuItem}>
