@@ -6,7 +6,7 @@ function Header({ children }) {
   const location = useLocation(); // Get the current location
 
   // List of paths where the Navbar should not be shown
-  const hideNavBarOnPaths = ["/connection", "/inscription"];
+  const hideNavBarOnPaths = ["/connexion", "/inscription"];
   // const headerText = {
   //   "/": "SUTAÏRU", // Homepage
   //   "/about": "About Us", // About page

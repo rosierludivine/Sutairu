@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/Home";
 import Header from "./Header";
 import Inscription from "./pages/Inscription";
-import Connection from "./pages/Connection";
+import Connexion from "./pages/Connection";
 import CreateDesign from "./pages/CreateDesign";
 import Designs from "./pages/MesDesign";
 import Profile from "./pages/MyProfile";
@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/inscription" element={<Inscription />} />
-          <Route path="/connection" element={<Connection />} />
+          <Route path="/connexion" element={<Connexion />} />
           <Route path="/creerdesign" element={<CreateDesign />} />
           <Route path="/designs" element={<Designs />} />
           <Route path="/profile" element={<Profile />} />
