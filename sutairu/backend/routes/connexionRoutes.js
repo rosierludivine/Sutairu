@@ -8,7 +8,7 @@ const router = express.Router();
 router.use(express.json());
 
 // Route pour gérer la connexion des utilisateurs
-router.post('/connection', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { email, password } = req.body;
 

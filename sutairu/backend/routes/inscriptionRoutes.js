@@ -1,4 +1,5 @@
 import express from "express";
+import bcrypt from "bcrypt";
 import Users from "../models/users.js";
 
 const router = express.Router();
@@ -15,17 +16,20 @@ router.post("/", async (req, res) => {
         .json({ message: "Cet email est déjà utilisé." });
     }
 
-    // Créer un nouvel utilisateur
+    // Hacher le mot de passe
+    const hashedPassword = await bcrypt.hash(password, 10);// le nombre 10 est le salt round (le nombre de fois ou il va etre re-hacher donc la 10 fois)
+
+    // Création du nouvelle utilisateur 
     const newUser = new Users({
       login,
       nom,
       prenom,
       email,
-      password, // Le mot de passe sera automatiquement haché avant d'être enregistré
+      password: hashedPassword, // faire en sortent le mot de passe soit hacher 
       dateOfBirth,
     });
 
-    // Sauvegarder l'utilisateur dans la base de données
+    // Sauvegarder l'utilisateur
     await newUser.save();
 
     res.status(201).json({ message: "Utilisateur créé avec succès." });
