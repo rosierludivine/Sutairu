@@ -7,11 +7,11 @@ import connexionRoutes from "./routes/connexionRoutes.js";
 
 // Configuration Express
 const app = express();
-const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/Sutairu?retryWrites=true&w=majority";
+const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/Sutairu?retryWrites=true&w=majority"; // URL de notre base de données 
 
 // Configuration CORS
 app.use(cors({
-  origin: 'http://localhost:3000', // Autoriser les requêtes depuis localhost:3000
+  origin: 'http://localhost:3000', // Autoriser les requêtes depuis localhost:3000 notre front 
   methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));

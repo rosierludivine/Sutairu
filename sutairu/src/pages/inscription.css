@@ -5,6 +5,10 @@
   gap: 20px;
   min-height: 100vh;
 }
+.error-message{
+  color: red;
+  font-size: small;
+}
 
 /* .image-section {
   flex: 0 1 auto;
