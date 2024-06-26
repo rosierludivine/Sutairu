@@ -68,6 +68,13 @@
     justify-content: center;
     margin-right: 40px; /* Gap between 3rd (size/price) and 4th (delete icon) elements */
   }
+
+  .sizePrice-panier {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 180px; /* Gap between 3rd (size/price) and 4th (delete icon) elements */
+  }
   
   .deleteIcon {
     cursor: pointer;

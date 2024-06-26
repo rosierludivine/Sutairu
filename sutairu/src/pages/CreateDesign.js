@@ -111,8 +111,10 @@ export default function CreateDesign() {
           <span class="">Prix : </span>
           <span>28,99€</span>
         </div>
-        <button class="sauvgarder">Sauvgarde</button>
         <button onClick={redirecttoMesDesigns} class="add-to-basket">
+          Sauvgarde
+        </button>
+        <button class="add-to-basket">
           Ajouter au panier
         </button>
         <button onClick={redirecttoPanier} class="voir-le-panier">

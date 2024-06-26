@@ -4,10 +4,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./mesdesign.css";
 import pull from "../images/pull.jpg";
-import CardItem from "../components/Carditem";
+import PanierItem from "../components/PanierItem";
 
 function MonPanier() {
-  const CardItems = [
+  const PanierItems = [
     {
       id: 1,
       name: "Product 1",
@@ -45,8 +45,8 @@ function MonPanier() {
 
   return (
     <div className="card">
-      {CardItems.map((item) => (
-        <CardItem key={item.id} item={item} />
+      {PanierItems.map((item) => (
+        <PanierItem key={item.id} item={item} />
       ))}
       <div className="button-container">
         <button className="prixBtn">Prix : 450</button>
