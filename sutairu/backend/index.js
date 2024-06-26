@@ -7,19 +7,20 @@ import connexionRoutes from "./routes/connexionRoutes.js";
 
 // Configuration Express
 const app = express();
-const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/?retryWrites=true&w=majority&appName=Sutairu";
+const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/Sutairu?retryWrites=true&w=majority";
 
 // Configuration CORS
 app.use(cors({
-  origin: 'http://localhost:5000/inscription', // Autoriser les requêtes depuis localhost:3000
+  origin: 'http://localhost:3000', // Autoriser les requêtes depuis localhost:3000
   methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+// Middleware pour parser les requêtes JSON
+app.use(express.json());
+
 async function connectToDatabase() {
     try {
-        app.use(express.json());
-
         await mongoose.connect(uri);
         console.log("connected to Mongodb");
 

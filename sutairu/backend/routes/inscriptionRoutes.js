@@ -7,7 +7,7 @@ const router = express.Router();
 router.use(express.json());
 
 // Route pour gérer l'inscription des utilisateurs
-router.post('/inscription', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const userData = {
       "login": req.body.nom + '_' + req.body.prenom, // Création du login
