@@ -1,11 +1,11 @@
 import React from "react";
-import image2 from "../images/image2.jpg";
+import connexion from "../images/connexion.jpg";
 import "./inscription.css";
 export default function Connection() {
   return (
     <div class="container">
       <div class="image-section">
-        <img src={image2} alt="image2" />
+        <img src={connexion} alt="connexion" />
       </div>
       <div class="inscription-section">
         <h2>CONNEXION</h2>

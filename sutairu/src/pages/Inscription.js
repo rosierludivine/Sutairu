@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import image2 from "../images/image2.jpg";
+import connexion from "../images/connexion.jpg";
 import "./inscription.css";
 function Inscription() {
   const [name, setName] = useState("");
@@ -39,13 +39,13 @@ function Inscription() {
   const navigate = useNavigate(); // Hook to access navigate function
 
   const redirectToLogin = () => {
-    navigate("/connection"); // Change the URL to '/login'
+    navigate("/connexion"); // Change the URL to '/login'
   };
 
   return (
     <div class="container">
       <div class="image-section">
-        <img src={image2} alt="image2" />
+        <img src={connexion} alt="connexion" />
       </div>
       <div class="inscription-section">
         <h2>INSCRIPTION</h2>
