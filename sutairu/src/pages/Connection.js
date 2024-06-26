@@ -7,7 +7,7 @@ export default function Connection() {
       <div class="image-section">
         <img src={connexion} alt="connexion" />
       </div>
-      <div class="inscription-section">
+      <div class="connection-section">
         <h2>CONNEXION</h2>
         <div class="input-group">
         <label for="email">Email :</label>
@@ -19,7 +19,7 @@ export default function Connection() {
         </div>
         <button type="button">CONNEXION</button>
         <div class="text">
-          Je n’est pas de compte ?
+          Je n’ai pas de compte ?
           <strong>
             <a href="/inscription">Insciption</a>
           </strong>
