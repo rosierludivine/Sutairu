@@ -12,11 +12,11 @@ export default function CreateDesign() {
   const [selectedChoix, setSelectedChoix] = useState("Hoodie");
 
   const redirecttoPanier = () => {
-    navigate("/monpanier"); // Change the URL to '/login'
+    navigate("/panier"); // Change the URL to '/login'
   };
 
   const redirecttoMesDesigns = () => {
-    navigate("/mesdesigns"); // Change the URL to '/login'
+    navigate("/designs"); // Change the URL to '/login'
   };
   const [btnClicked, setBtnClicked] = useState(false);
   const [btnChoice, setBtnChoice] = useState(null);
@@ -107,7 +107,6 @@ export default function CreateDesign() {
         )}
         <input type="text" placeholder="Texte" />
         <input type="text" placeholder="Logo" />
-        <input type="text" placeholder="Motif" />
         <div class="price">
           <span class="">Prix : </span>
           <span>28,99€</span>

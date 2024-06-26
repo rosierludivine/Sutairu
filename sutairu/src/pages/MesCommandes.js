@@ -60,7 +60,7 @@ function MesCommandes() {
 
   // Function to hide the modal
   const suivreMonColis = () => {
-    navigate("/moncolis"); // Change the URL to '/login'
+    navigate("/colis"); // Change the URL to '/login'
   };
 
   const navigate = useNavigate(); // Hook to access navigate function

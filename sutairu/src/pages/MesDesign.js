@@ -39,7 +39,7 @@ export default function MesDesigns() {
   const navigate = useNavigate(); // Hook to access navigate function
 
   const redirecttoPanier = () => {
-    navigate("/monpanier"); // Change the URL to '/login'
+    navigate("/panier"); // Change the URL to '/login'
   };
 
   return (

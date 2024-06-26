@@ -6,11 +6,11 @@ import Header from "./Header";
 import Inscription from "./pages/Inscription";
 import Connection from "./pages/Connection";
 import CreateDesign from "./pages/CreateDesign";
-import MesDesigns from "./pages/MesDesign";
-import MyProfile from "./pages/MyProfile";
-import MonColis from "./pages/MonColis";
-import MonPanier from "./pages/MonPanier";
-import MesCommandes from "./pages/MesCommandes";
+import Designs from "./pages/MesDesign";
+import Profile from "./pages/MyProfile";
+import Colis from "./pages/MonColis";
+import Panier from "./pages/MonPanier";
+import Commandes from "./pages/MesCommandes";
 
 function App() {
   return (
@@ -21,11 +21,11 @@ function App() {
           <Route path="/inscription" element={<Inscription />} />
           <Route path="/connection" element={<Connection />} />
           <Route path="/creerdesign" element={<CreateDesign />} />
-          <Route path="/mesdesigns" element={<MesDesigns />} />
-          <Route path="/myprofile" element={<MyProfile />} />
-          <Route path="/moncolis" element={<MonColis />} />
-          <Route path="/monpanier" element={<MonPanier />} />
-          <Route path="/mescommandes" element={<MesCommandes />} />
+          <Route path="/designs" element={<Designs />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/colis" element={<Colis />} />
+          <Route path="/panier" element={<Panier />} />
+          <Route path="/commandes" element={<Commandes />} />
         </Routes>
       </Header>
     </div>
