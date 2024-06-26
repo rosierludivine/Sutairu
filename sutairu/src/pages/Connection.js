@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import image2 from "../images/image2.jpg";
+import connexion from "../images/connexion.jpg";
 import "./inscription.css";
 
 function Connection() {
@@ -26,9 +26,9 @@ function Connection() {
   };
 
   return (
-    <div className="container">
-      <div className="image-section">
-        <img src={image2} alt="image2" />
+    <div class="container">
+      <div class="image-section">
+        <img src={connexion} alt="connexion" />
       </div>
       <div className="inscription-section">
         <h2>CONNEXION</h2>

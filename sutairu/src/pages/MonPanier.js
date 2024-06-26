@@ -40,7 +40,7 @@ function MonPanier() {
 
   const navigate = useNavigate(); // Hook to access navigate function
   const commander = () => {
-    navigate("/mescommandes"); // Change the URL to '/login'
+    navigate("/commandes"); // Change the URL to '/login'
   };
 
   return (

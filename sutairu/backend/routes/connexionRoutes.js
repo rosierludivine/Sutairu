@@ -4,10 +4,11 @@ import bcrypt from "bcrypt";
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/connexion', async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(`Tentative de connexion avec l'email: ${email}`); // Log email
+    console.log(`Tentative de connexion avec l'email: ${email}`); // Savoir avec quelle mail on essaye de ce connecter 
+
 
     const user = await Users.findOne({ email });
     if (!user) {

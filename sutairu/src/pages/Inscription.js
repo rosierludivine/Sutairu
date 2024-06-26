@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import image2 from "../images/image2.jpg";
+import connexion from "../images/connexion.jpg";
 import "./inscription.css";
 
-function Inscription() {
+function Inscription2() {
   const [values, setValues] = useState({
     nom: '', 
     prenom:'', 
@@ -39,7 +39,7 @@ function Inscription() {
     <form onSubmit={handleOnSubmit}>
       <div className="container">
         <div className="image-section">
-          <img src={image2} alt="image2" />
+          <img src={connexion} alt="image connexion" />
         </div>
         <div className="inscription-section">
           <h2>INSCRIPTION</h2>
@@ -63,13 +63,11 @@ function Inscription() {
             <label htmlFor="dateOfBirth">Date de naissance :</label>
             <input type="date" id="dateOfBirth" value={values.dateOfBirth} onChange={e => setValues({...values, dateOfBirth: e.target.value})} />
           </div>
-          <button type="submit">
-            CRÉER MON COMPTE
-          </button>
+          <button type="submit">CRÉER MON COMPTE</button>
         </div>
       </div>
     </form>
   );
 }
 
-export default Inscription;
+export default Inscription2;

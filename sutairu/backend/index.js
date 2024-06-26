@@ -25,7 +25,6 @@ async function connectToDatabase() {
         console.log("connected to Mongodb");
 
         // Routes
-        app.use("/users", userRouter); 
         app.use("/inscription", inscriptionRoutes); 
         app.use("/connexion", connexionRoutes); 
 
