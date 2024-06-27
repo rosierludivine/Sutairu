@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import inscriptionRoutes from "./routes/inscriptionRoutes.js";
 import connexionRoutes from "./routes/connexionRoutes.js";
-import sauvegardeRoutes from "./routes/sauvegardeRoutes.js"
+import sauvegardeRoutes from "./routes/sauvegardeRoutes.js"; 
 
 // Configuration Express
 const app = express();
@@ -27,7 +27,8 @@ async function connectToDatabase() {
         // Routes
         app.use("/inscription", inscriptionRoutes); 
         app.use("/connexion", connexionRoutes); 
-        app.use("/sauvegarde", sauvegardeRoutes);
+        app.use("/article", sauvegardeRoutes);
+        // app.use("/articles", articleRoutes);
 
         app.listen(5000, () => {
             console.log("Server is running on port 5000");

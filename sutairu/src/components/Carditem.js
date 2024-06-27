@@ -8,13 +8,13 @@ const CardItem = ({ item }) => {
   return (
     <div className="CardItem">
       <div className="leftSide">
-        <img src={item.image} alt={item.name} />
-        <p className="productName">{item.name}</p>
+        <img src={item.image} alt={item.hoodie} />
+        <p className="productName">{item.hoodie}</p>
       </div>
       <div className="rightSide">
         <div className="sizePrice">
-          <p>Taille: {item.size}</p>
-          <p>Prix: ${item.price}</p>
+          <p>Taille: {item.taille}</p>
+          <p>Prix: ${item.prix}</p>
         </div>
         <button className="ajouterBtn">Ajouter au panier</button>
         <div className="deleteIcon">
