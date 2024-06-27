@@ -14,10 +14,17 @@
     background-color: transparent;
   }
 
-  canvas {
-    height: 15vb !important;
-    width:15vb !important;
-}
+  .canvas-container {
+    width: 110px; /* Ajustez cette valeur selon vos besoins */
+    height: 110px; /* Ajustez cette valeur selon vos besoins */
+    position:relative; 
+  }
+  
+  .canvas-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
   .boutonIcon{
     margin: 0;
     padding: 0;

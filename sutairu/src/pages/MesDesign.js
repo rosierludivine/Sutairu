@@ -6,7 +6,7 @@ import CardItem from "../components/Carditem";
 
 export default function MesDesigns() {
   const [articles, setArticles] = useState([]); // État pour stocker les articles
-  const navigate = useNavigate(); // Hook pour accéder à la fonction navigate
+  const navigate = useNavigate(); // Hook to access navigate function
 
   // Effectuer une requête GET pour récupérer les articles depuis le backend
   useEffect(() => {
@@ -30,10 +30,10 @@ export default function MesDesigns() {
           key={item._id}
           item={{
             id: item._id,
-            image: item.image,
             hoodie: item.hoodie,
             taille: item.taille,
             prix: item.prix,
+            couleur: item.couleur 
           }}
         />
       ))}
