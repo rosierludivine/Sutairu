@@ -25,7 +25,9 @@ export default function Connection() {
           </strong>
         </div>
         <div class="text">
-          <strong>Mot de passe oublié</strong>
+          <strong>
+            <a href="/changement-mot-de-passe">Mot de passe oublié</a>
+          </strong>
         </div>
       </div>
     </div>
