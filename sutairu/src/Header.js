@@ -24,7 +24,7 @@ function Header({ children }) {
           <Navbar name="SUTAÏRU" />
         </div>
       )}
-      {children}
+      <div>{children}</div>
     </div>
   );
 }

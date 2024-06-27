@@ -3,7 +3,7 @@ import connexion from "../images/connexion.jpg";
 import "./inscription.css";
 export default function Connection() {
   return (
-    <div class="containertest">
+    <div class="container">
       <div class="image-section">
         <img src={connexion} alt="connexion" />
       </div>

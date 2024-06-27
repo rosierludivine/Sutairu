@@ -1,4 +1,4 @@
-.containertest {
+.container {
     display: flex;
     flex: 1;
     align-items: flex-start;
@@ -73,7 +73,7 @@
     border-radius: 27px;
   }
   
-  .button {
+  button {
     padding: 10px 40px;
     background-color: #000000;
     color: white;
