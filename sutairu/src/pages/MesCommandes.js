@@ -4,8 +4,12 @@ import "./mesdesign.css";
 import pull from "../images/pull.jpg";
 import CardItemCommandes from "../components/CardItemCommandes";
 import { countries } from "countries-list";
+import PaymentForm from "../components/PayementForm";
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
-function MesCommandes() {
+const stripePromise = loadStripe('YOUR_STRIPE_PUBLIC_KEY');
+function MesCommandes(props) {
   const CardItemsCommmande = [
     {
       id: 1,
@@ -95,33 +99,9 @@ function MesCommandes() {
           <button class="option">Apple Pay</button>
           <button class="option">PayPal</button>
         </div>
-        <form>
-          <div class="form-group">
-            <label for="card-number" class="card-text">Numéro de Carte :</label>
-            <input type="text" id="card-number" class="placeholder" placeholder="Votre nom" />
-          </div>
-          <div class="form-group">
-            <label for="expiration" class="card-text">Expiration :</label>
-            <input type="text" id="expiration" class="placeholder" placeholder="Votre expiration" />
-          </div>
-          <div class="form-group">
-            <label for="cvc" class="card-text">CVC : </label>
-            <input type="text" id="cvc"  class="placeholder"placeholder="Votre CVC" />
-          </div>
-          <div class="form-group">
-            <label for="country" class="card-text">Pays :</label>
-            <select id="country" class="country">
-              <option value="">Sélectionnez un pays</option>
-              {countryOptions.map((country) => (
-                <option key={country.code} value={country.code}>
-                  {country.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <button type="button"  className="butt-paye" onClick={showModal}>
-            Payer
-          </button>
+        <Elements stripe={stripePromise}>
+          <PaymentForm showModal={showModal} />
+        </Elements>
           {isModalVisible && (
             <div className="modal-overlay">
               <div className="modal-content">
@@ -134,7 +114,6 @@ function MesCommandes() {
               </div>
             </div>
           )}
-        </form>
       </div>
     </div>
   );
