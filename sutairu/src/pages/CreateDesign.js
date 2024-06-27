@@ -1,25 +1,60 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import swipe from "../icons/swipe.svg";
 import share from "../icons/share.svg";
 import ThreeScene from '../components/three';
-import { CirclePicker  } from "react-color";
+import { CirclePicker } from "react-color";
 import "./createdesign.css";
 
 export default function CreateDesign() {
   const navigate = useNavigate(); // Hook to access navigate function
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedChoix, setSelectedChoix] = useState("Hoodie");
+  const [color, setColor] = useState("#ffffff");
+  const [showColorPicker, setShowColorPicker] = useState(false);
+  const [texte, setTexte] = useState("");
+  const [logo, setLogo] = useState("");
+
+  const handleSave = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/sauvegarde', {
+        login: "user_login", 
+        hoodie: selectedChoix,
+        taille: selectedSize,
+        couleur: color,
+        texte: texte,
+        logo: logo,
+        prix: 28.99, 
+      });
+      console.log(response.data.message);
+    } catch (error) {
+      console.error("Erreur lors de la sauvegarde :", error);
+    }
+  };
+
+  const openColorPicker = () => {
+    setShowColorPicker(true);
+  };
+
+  const closeColorPicker = () => {
+    setShowColorPicker(false);
+  };
+
+  const handleColorChange = (newColor) => {
+    setColor(newColor.hex);
+  };
 
   const redirecttoPanier = () => {
-    navigate("/panier"); // Change the URL to '/login'
+    navigate("/panier"); 
   };
 
   const redirecttoMesDesigns = () => {
-    navigate("/designs"); // Change the URL to '/login'
+    navigate("/designs"); 
   };
+
   const [btnClicked, setBtnClicked] = useState(false);
-  const [btnChoice, setBtnChoice] = useState(null);
+  const [btnChoice, setBtnChoice] = useState(false);
 
   const tailleInputClicked = () => {
     setBtnClicked(!btnClicked);
@@ -29,12 +64,6 @@ export default function CreateDesign() {
     setBtnChoice(!btnChoice);
   };
 
-  const [color, setColor] = useState("#ffffff"); // État pour stocker la couleur sélectionnée
-  const [showColorPicker, setShowColorPicker] = useState(false); // État pour contrôler l'affichage du sélecteur de couleurs
-  const openColorPicker = () => {
-    setShowColorPicker(true);
-  };
-
   const handleSizeSelection = (size) => {
     setSelectedSize(size);
   };
@@ -42,22 +71,15 @@ export default function CreateDesign() {
   const handleChoixSelection = (choix) => {
     setSelectedChoix(choix);
   };
-  
-  const closeColorPicker = () => {
-    setShowColorPicker(false);
-  };
 
-  const handleColorChange = (newColor) => {
-    setColor(newColor.hex);
-  };
   return (
-    <div class="container">
-      <div class="left-part">
+    <div className="container">
+      <div className="left-part">
         <h2 className="create-design">Créer votre design</h2>
         <div className="img-scene">
-        <ThreeScene color={color} setColor={setColor} choice={selectedChoix}/>
+          <ThreeScene color={color} setColor={setColor} choice={selectedChoix} />
         </div>
-        <div class="button-container">
+        <div className="button-container">
           <button>
             <img src={swipe} alt="swipe" />
           </button>
@@ -66,58 +88,51 @@ export default function CreateDesign() {
           </button>
         </div>
       </div>
-      <div class="right-part">
-        <input onClick={choixInputClicked} type="text" placeholder={selectedChoix ? `${selectedChoix}` : "Choix"}/>
-        {btnChoice ? (
+      <div className="right-part">
+        <input
+          onClick={choixInputClicked}
+          type="text"
+          placeholder={selectedChoix ? `${selectedChoix}` : "Choix"}
+        />
+        {btnChoice && (
           <div className="button-row">
             <button onClick={() => handleChoixSelection("Hoodie")}>Hoodie</button>
             <button onClick={() => handleChoixSelection("T-shirt")}>T-shirt</button>
           </div>
-        ) : (
-          ""
         )}
-        <input onClick={tailleInputClicked} type="text" placeholder={selectedSize ? `${selectedSize}` : "Taille"} />
-        {btnClicked ? (
+        <input
+          onClick={tailleInputClicked}
+          type="text"
+          placeholder={selectedSize ? `${selectedSize}` : "Taille"}
+        />
+        {btnClicked && (
           <div className="button-row">
             <button onClick={() => handleSizeSelection("XS")}>XS</button>
             <button onClick={() => handleSizeSelection("S")}>S</button>
             <button onClick={() => handleSizeSelection("M")}>M</button>
-          </div>
-        ) : (
-          ""
-        )}
-
-        {btnClicked ? (
-          <div className="button-row">
             <button onClick={() => handleSizeSelection("L")}>L</button>
             <button onClick={() => handleSizeSelection("XL")}>XL</button>
             <button onClick={() => handleSizeSelection("XXL")}>XXL</button>
           </div>
-        ) : (
-          ""
         )}
-
         <input type="text" placeholder="Couleur" onClick={openColorPicker} value={color} readOnly />
-
         {showColorPicker && (
-          <div style={{ Index: "1" }}>
+          <div style={{ zIndex: "1" }}>
             <CirclePicker color={color} onChange={handleColorChange} />
             <button onClick={closeColorPicker}>Fermer</button>
           </div>
         )}
-        <input type="text" placeholder="Texte" />
-        <input type="text" placeholder="Logo" />
-        <div class="price">
-          <span class="">Prix : </span>
+        <input type="text" placeholder="Texte" value={texte} onChange={(e) => setTexte(e.target.value)} />
+        <input type="text" placeholder="Logo" value={logo} onChange={(e) => setLogo(e.target.value)} />
+        <div className="price">
+          <span>Prix : </span>
           <span>28,99€</span>
         </div>
-        <button onClick={redirecttoMesDesigns} class="add-to-basket">
-          Sauvgarde
-        </button>
-        <button class="add-to-basket">
+        <button onClick={handleSave} className="sauvgarder">Sauvgarde</button>
+        <button onClick={redirecttoMesDesigns} className="add-to-basket">
           Ajouter au panier
         </button>
-        <button onClick={redirecttoPanier} class="voir-le-panier">
+        <button onClick={redirecttoPanier} className="voir-le-panier">
           Voir le panier
         </button>
       </div>
