@@ -1,6 +1,8 @@
+// Connection.js
 import React, { useState } from "react";
 import axios from 'axios';
 import connexion from "../images/connexion.jpg";
+import { Link } from 'react-router-dom'; // Importez Link depuis React Router
 import "./inscription.css";
 
 function Connection() {
@@ -17,7 +19,8 @@ function Connection() {
         password,
       });
       console.log("Réponse du serveur :", response.data);
-      // Traiter la réponse du serveur ici (par exemple, rediriger l'utilisateur)
+      // Rediriger l'utilisateur vers la page d'accueil après connexion réussie
+      window.location.href = '/'; // Redirection avec window.location.href
     } catch (error) {
       console.error("Erreur lors de la connexion :", error.response ? error.response.data : error.message);
       // Mettre à jour l'état avec le message d'erreur
@@ -26,8 +29,8 @@ function Connection() {
   };
 
   return (
-    <div class="container">
-      <div class="image-section">
+    <div className="container">
+      <div className="image-section">
         <img src={connexion} alt="connexion" />
       </div>
       <div className="inscription-section">
@@ -59,7 +62,7 @@ function Connection() {
         <div className="text">
           Je n’ai pas de compte ?
           <strong>
-            <a href="/inscription">Inscription</a>
+            <Link to="/inscription">Inscription</Link>
           </strong>
         </div>
         <div className="text">
