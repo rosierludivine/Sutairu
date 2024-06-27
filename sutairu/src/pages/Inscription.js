@@ -43,7 +43,7 @@ function Inscription() {
   };
 
   return (
-    <div class="container">
+    <div class="containertest">
       <div class="image-section">
         <img src={connexion} alt="connexion" />
       </div>

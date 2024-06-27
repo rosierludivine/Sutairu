@@ -3,7 +3,7 @@ import connexion from "../images/connexion.jpg";
 import "./inscription.css";
 export default function Connection() {
   return (
-    <div class="container">
+    <div class="containertest">
       <div class="image-section">
         <img src={connexion} alt="connexion" />
       </div>
@@ -17,7 +17,7 @@ export default function Connection() {
           <label for="password">Password :</label>
           <input type="password" id="password" />
         </div>
-        <button type="button">CONNEXION</button>
+        <button type="button" className="button">CONNEXION</button>
         <div class="text">
           Je n’ai pas de compte ?
           <strong>

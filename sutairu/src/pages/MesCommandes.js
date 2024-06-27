@@ -123,8 +123,7 @@ function MesCommandes() {
             Payer
           </button>
           {isModalVisible && (
-            <div>
-              <div className="modal-overlay"></div>
+            <div className="modal-overlay">
               <div className="modal-content">
                 <h2>Votre paiement a bien été accepté</h2>
                 <div className="modal-buttons">
