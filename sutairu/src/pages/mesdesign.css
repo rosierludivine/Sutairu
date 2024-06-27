@@ -8,7 +8,21 @@
     background-color: #f1f1f1;
     border: 2px solid #0E4A65;
   }
-  
+  .boutonIconEdit{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  canvas {
+    height: 15vb !important;
+    width:15vb !important;
+}
+  .boutonIcon{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+  }
   .CardItem img {
     width: 100px; /* Adjust as needed */
     height: auto;
@@ -31,6 +45,8 @@
   
   .CardItem .deleteIcon {
     cursor: pointer;
+    margin: 0;
+    padding: 0;
   }
   
   .CardItem {
