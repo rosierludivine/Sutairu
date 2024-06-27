@@ -255,3 +255,56 @@
     margin-top: 4%;
   }
   
+
+  @media (max-width: 768px) {
+    .card{
+      flex-direction: column;
+      margin-top: 10%;
+    }
+    .CardItem{
+      width: 90%;
+      flex-direction: column;
+      height: 120%;
+    }
+    .sizePrice{
+      flex-direction: row !important;
+
+    }
+    .sizePrice :nth-child(1) {
+      font-size: smaller;
+    }
+    .sizePrice :nth-child(2) {
+      font-size: smaller;
+      line-height: unset;
+    }
+    .ajouterBtn{
+      font-size: smaller;
+    }
+    .deleteIcon{
+      flex-direction: row;
+      gap: unset;
+      width: 25%;
+      height: 25%;
+    }
+    .productName{
+      font-size: large;
+    }
+    .commanderBtn{
+      margin-bottom: 17%;
+    }
+    .container{
+      flex-direction: column;
+      margin-top: 10%;
+    }
+    .articles{
+      width: 90%;
+    }
+    .payment-form{
+      width: 90%;
+      align-items: center;
+    }
+    .pay-button{ 
+      margin-left: unset;
+    }
+  }
+  

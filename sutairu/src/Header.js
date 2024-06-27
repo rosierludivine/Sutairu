@@ -20,9 +20,9 @@ function Header({ children }) {
   return (
     <div>
       {showNavBar && (
-        <nav>
+        <div>
           <Navbar name="SUTAÏRU" />
-        </nav>
+        </div>
       )}
       <div>{children}</div>
     </div>

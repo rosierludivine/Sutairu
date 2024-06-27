@@ -54,11 +54,31 @@
   @media (max-width: 768px) {
     .parent {
       flex-direction: column; /* Stack items vertically on smaller screens */
+      align-items: center !important;
+      width: 100% !important;
+      gap: unset;
+    }
+    .parent2 {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      align-items: center !important;
+      width: 100% !important;
+      gap : unset;
+      margin-top: 17%;
     }
   
     .child,
     .image {
-      max-width: 100%; /* Allow children to take full width on smaller screens */
+      max-width: 100% !important; /* Allow children to take full width on smaller screens */
+    }
+    .img-three{
+      align-self: center;
+    }
+    .container{
+      min-height: 32vh !important;
+      margin-bottom: 17%;
+    }
+    .customLink{
+      margin-bottom: 17%;
     }
   }
   
