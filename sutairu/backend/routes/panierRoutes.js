@@ -62,6 +62,9 @@ router.get("/:userId", async (req, res) => {
   try {
     const panier = await Panier.findOne({ user: userId }).populate('articles.article');
     if (panier) {
+      // Assurez-vous que chaque article a toutes les propriétés nécessaires
+      panier.articles = panier.articles.filter(item => item.article !== null && item.article.hoodie !== null);
+
       res.status(200).json(panier);
     } else {
       res.status(404).json({ message: "Panier non trouvé." });
