@@ -4,19 +4,17 @@ import cors from "cors";
 import inscriptionRoutes from "./routes/inscriptionRoutes.js";
 import connexionRoutes from "./routes/connexionRoutes.js";
 import sauvegardeRoutes from "./routes/sauvegardeRoutes.js"; 
+import panierRoutes from "./routes/panierRoutes.js"; 
 
-// Configuration Express
 const app = express();
-const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/Sutairu?retryWrites=true&w=majority"; // URL de notre base de données 
+const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/Sutairu?retryWrites=true&w=majority";
 
-// Configuration CORS
 app.use(cors({
-  origin: 'http://localhost:3000', // Autoriser les requêtes depuis localhost:3000 notre front 
+  origin: 'http://localhost:3000',
   methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Middleware pour parser les requêtes JSON
 app.use(express.json());
 
 async function connectToDatabase() {
@@ -24,11 +22,10 @@ async function connectToDatabase() {
         await mongoose.connect(uri);
         console.log("connected to Mongodb");
 
-        // Routes
         app.use("/inscription", inscriptionRoutes); 
         app.use("/connexion", connexionRoutes); 
         app.use("/article", sauvegardeRoutes);
-        // app.use("/articles", articleRoutes);
+        app.use("/panier", panierRoutes); 
 
         app.listen(5000, () => {
             console.log("Server is running on port 5000");

@@ -1,26 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "./mesdesign.css";
-import CardItem from "../components/Carditem";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import CardItem from '../components/Carditem';
+import './mesdesign.css';
 
-export default function MesDesigns() {
-  const [articles, setArticles] = useState([]); // État pour stocker les articles
-  const navigate = useNavigate(); // Hook to access navigate function
+function MesDesigns() {
+  const [articles, setArticles] = useState([]);
+  const [panier, setPanier] = useState([]);
+  const navigate = useNavigate();
 
-  // Effectuer une requête GET pour récupérer les articles depuis le backend
   useEffect(() => {
-    axios.get("http://localhost:5000/article")
+    axios.get('http://localhost:5000/article')
       .then(response => {
         setArticles(response.data);
       })
       .catch(error => {
-        console.error("Erreur lors de la récupération des articles :", error);
+        console.error('Erreur lors de la récupération des articles :', error);
       });
   }, []);
 
+  const ajouterAuPanier = (article) => {
+    setPanier([...panier, article]);
+    console.log('Article ajouté au panier :', article);
+  };
+
   const redirecttoPanier = () => {
-    navigate("/panier"); 
+    navigate('/panier', { state: { panier } });
   };
 
   return (
@@ -35,6 +40,7 @@ export default function MesDesigns() {
             prix: item.prix,
             couleur: item.couleur 
           }}
+          ajouterAuPanier={ajouterAuPanier}
         />
       ))}
       <div className="button-container">
@@ -45,3 +51,5 @@ export default function MesDesigns() {
     </div>
   );
 }
+
+export default MesDesigns;

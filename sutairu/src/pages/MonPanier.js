@@ -1,62 +1,89 @@
-// src/AboutPage.js
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import './monpanier.css';
+import deleteSvg from "../icons/deleteSvg.svg";
+import ThreeArticle from '../components/ThreeArticle';
 
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import "./mesdesign.css";
-import pull from "../images/pull.jpg";
-import CardItem from "../components/Carditem";
+function MonPanier(item) {
+  const [panier, setPanier] = useState([]);
+  const navigate = useNavigate();
 
-function MonPanier() {
-  const CardItems = [
-    {
-      id: 1,
-      name: "Product 1",
-      size: "M",
-      price: 25,
-      image: pull,
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      size: "L",
-      price: 30,
-      image: pull,
-    },
-    {
-      id: 3,
-      name: "Product 3",
-      size: "S",
-      price: 20,
-      image: pull,
-    },
-    {
-      id: 4,
-      name: "Product 4",
-      size: "XL",
-      price: 35,
-      image: pull,
-    },
-  ];
+  useEffect(() => {
+    const fetchPanier = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/panier/lulu@test.com'); 
+        setPanier(response.data.articles);
+      } catch (error) {
+        console.error('Erreur lors de la récupération du panier :', error);
+      }
+    };
 
-  const navigate = useNavigate(); // Hook to access navigate function
+    fetchPanier();
+  }, []);
+
+  const handleDelete = async (articleId) => {
+    try {
+      const response = await axios.delete(`http://localhost:5000/panier/lulu@test.com/${articleId}`);
+      alert("Article supprimé avec succès");
+      window.location.reload();
+    } catch (error) {
+      alert('Erreur lors de la suppression de l\'article');
+    }
+  };
+
   const commander = () => {
-    navigate("/commandes"); // Change the URL to '/login'
+    navigate('/commandes');
+  };
+
+  // Calcul du prix total du panier
+  const calculerPrixTotal = () => {
+    let total = 0;
+    panier.forEach((item) => {
+      total += item.article.prix * item.quantite;
+    });
+    return total;
   };
 
   return (
     <div className="card">
-      {CardItems.map((item) => (
-        <CardItem key={item.id} item={item} />
-      ))}
-      <div className="button-container">
-        <button className="prixBtn">Prix : 450</button>
+  {panier.map((item) => (
+    <div key={item.article._id} className="CardItem">
+      <div className="leftSide">
+        {/* Affichage de l'article */}
+        {/* Assurez-vous d'adapter cela à vos besoins exacts */}
+        
+        <ThreeArticle type={item.article.hoodie} color={item.article.couleur} />
+        <p className="productName">{item.article.hoodie}</p>
       </div>
-      <div className="button-container">
-        <button onClick={commander} className="commanderBtn">
-          Commander
-        </button>
+      <div className="rightSide">
+        <div className='detail'>
+        <p>Taille : {item.article.taille}</p>
+        <p>Quantité : {item.quantite}</p>
+        </div>
+        <div className="sizePrice2">
+          <p>Prix unitaire : ${item.article.prix}</p>
+          <p>Sous-total : ${item.article.prix * item.quantite}</p>
+        </div>
+
+        {/* Utilisation d'une icône de corbeille pour supprimer l'article */}
+        <div className="deleteIcon">
+        <button className="boutonIcon" onClick={() => handleDelete(item.article._id)}><img src={deleteSvg} alt="delete icon" style={{width: "25px", height:"auto"}}/></button>
+        </div>
       </div>
     </div>
+  ))}
+  <div className="button-container">
+    <button className="prixBtn">
+      Prix total : ${calculerPrixTotal()}
+    </button>
+  </div>
+  <div className="button-container">
+    <button onClick={commander} className="commanderBtn">
+      Commander
+    </button>
+  </div>
+</div>
   );
 }
 
