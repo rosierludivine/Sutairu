@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const ArticleSchema = new mongoose.Schema({
-  login: { type: String, required: true },
+  email: { type: String, required: true },
   hoodie: { type: String, required: true },
   taille: { type: String, required: true },
   couleur: { type: String, required: true },

@@ -24,7 +24,7 @@ async function connectToDatabase() {
 
         app.use("/inscription", inscriptionRoutes); 
         app.use("/connexion", connexionRoutes); 
-        app.use("/article", sauvegardeRoutes);
+        app.use("/article", sauvegardeRoutes); // Utilisation de sauvegardeRoutes pour gérer les articles
         app.use("/panier", panierRoutes); 
 
         app.listen(5000, () => {
