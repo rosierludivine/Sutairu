@@ -1,18 +1,14 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const { Schema } = mongoose;
-
-const UserSchema = new Schema({
-  login: String,
-  hoodie: String,
-  taille: String,
-  couleur: String,
-  texte: String,
-  logo: String, 
-  prix: Number, 
+const ArticleSchema = new mongoose.Schema({
+  login: { type: String, required: true },
+  hoodie: { type: String, required: true },
+  taille: { type: String, required: true },
+  couleur: { type: String, required: true },
+  texte: { type: String, required: true },
+  logo: { type: String, required: true },
+  prix: { type: Number, required: true }
 });
 
-
-const Model = mongoose.model("article", UserSchema);
-
-export default Model;
+const Article = mongoose.model('Article', ArticleSchema);
+export default Article;
