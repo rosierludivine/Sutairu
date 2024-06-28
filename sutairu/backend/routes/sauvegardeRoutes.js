@@ -1,17 +1,16 @@
 import express from "express";
-import Modele from "../models/modele.js"; // Assurez-vous que le chemin vers votre modèle est correct
-import { Model } from "mongoose";
+import Article from "../models/modele.js"; // Assurez-vous que le chemin vers votre modèle est correct
 
 const router = express.Router();
 
 // Création d'un article 
 router.post("/", async (req, res) => {
   try {
-    const { login, hoodie, taille, couleur, texte, logo, prix } = req.body;
+    const { email, hoodie, taille, couleur, texte, logo, prix } = req.body;
 
-    // Création d'un nouvel article avec le modèle Modele
-    const newArticle = new Modele({
-      login,
+    // Création d'un nouvel article avec le modèle Article
+    const newArticle = new Article({
+      email,
       hoodie,
       taille,
       couleur,
@@ -34,7 +33,7 @@ router.post("/", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const deletedArticle = await Modele.findByIdAndDelete(id);
+    const deletedArticle = await Article.findByIdAndDelete(id);
     if (!deletedArticle) {
       return res.status(404).json({ message: "Article non trouvé." });
     }
@@ -48,7 +47,7 @@ router.delete("/:id", async (req, res) => {
 // Afficher tous les articles
 router.get("/", async (req, res) => {
   try {
-    const articles = await Modele.find();
+    const articles = await Article.find();
     res.status(200).json(articles);
   } catch (error) {
     console.error("Erreur lors de la récupération des articles :", error);
