@@ -87,4 +87,11 @@
   .phone {
     padding-top: 20px;
   }
+
+  
+  @media (max-width: 768px) {
+    .profile_page_card{
+      flex-direction: column !important;
+    }
+  }
 }

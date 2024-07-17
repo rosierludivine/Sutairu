@@ -12,6 +12,7 @@ import Colis from "./pages/MonColis";
 import Panier from "./pages/MonPanier";
 import Commandes from "./pages/MesCommandes";
 import { PanierProvider } from "./pages/PanierProvider";
+import ForgetMdpPage from "./pages/foregtmdp";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/inscription" element={<Inscription />} />
           <Route path="/connexion" element={<Connexion />} />
+          <Route path="/changement-mot-de-passe" element={<ForgetMdpPage />} />
           <Route path="/creerdesign" element={<CreateDesign />} />
           <Route path="/designs" element={<Designs />} />
           <Route path="/profile" element={<Profile />} />

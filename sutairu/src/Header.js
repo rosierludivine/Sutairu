@@ -6,7 +6,7 @@ function Header({ children }) {
   const location = useLocation(); // Get the current location
 
   // List of paths where the Navbar should not be shown
-  const hideNavBarOnPaths = ["/connexion", "/inscription"];
+  const hideNavBarOnPaths = ["/connexion", "/inscription", "/changement-mot-de-passe"];
   // const headerText = {
   //   "/": "SUTAÏRU", // Homepage
   //   "/about": "About Us", // About page
@@ -20,9 +20,9 @@ function Header({ children }) {
   return (
     <div>
       {showNavBar && (
-        <nav>
+        <div>
           <Navbar name="SUTAÏRU" />
-        </nav>
+        </div>
       )}
       <div>{children}</div>
     </div>
