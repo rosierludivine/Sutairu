@@ -11,12 +11,14 @@ import Profile from "./pages/MyProfile";
 import Colis from "./pages/MonColis";
 import Panier from "./pages/MonPanier";
 import Commandes from "./pages/MesCommandes";
+import { PanierProvider } from "./pages/PanierProvider";
 import ForgetMdpPage from "./pages/foregtmdp";
 
 function App() {
   return (
     <div>
       <Header>
+      <PanierProvider>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/inscription" element={<Inscription />} />
@@ -29,6 +31,7 @@ function App() {
           <Route path="/panier" element={<Panier />} />
           <Route path="/commandes" element={<Commandes />} />
         </Routes>
+        </PanierProvider>
       </Header>
     </div>
   );

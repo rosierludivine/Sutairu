@@ -1,108 +1,74 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import axios from 'axios';
 import connexion from "../images/connexion.jpg";
 import "./inscription.css";
-function Inscription() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+
+function Inscription2() {
+  const [values, setValues] = useState({
+    nom: '', 
+    prenom:'', 
+    email: '',
+    password:'', 
+    dateOfBirth:''
+  });
+
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    let result = await fetch(
-      'http://localhost:5000/register', {
-      method: "post",
-      body: JSON.stringify({ name, email }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    result = await result.json();
-    console.warn(result);
-    if (result) {
-      alert("Data saved succesfully");
-      setEmail("");
-      setName("");
+    try {
+      const response = await axios.post('http://localhost:5000/inscription', values, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      console.log('User created:', response.data);
+      alert("Data saved successfully");
+      setValues({
+        nom: '', 
+        prenom:'', 
+        email: '',
+        password:'', 
+        dateOfBirth:''
+      });
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Error creating user:', error);
+      alert('Error creating user');
     }
   }
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  // Function to toggle the modal's visibility
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  // Function to hide the modal
-  const btnAnnuler = () => {
-    setIsModalVisible(false);
-  };
-
-  const navigate = useNavigate(); // Hook to access navigate function
-
-  const redirectToLogin = () => {
-    navigate("/connexion"); // Change the URL to '/login'
-  };
 
   return (
-    <div class="container">
-      <div class="image-section">
-        <img src={connexion} alt="connexion" />
-      </div>
-      <div class="inscription-section">
-        <h2>INSCRIPTION</h2>
-        <div class="input-group">
-          <label for="name">Nom:</label>
-          <input type="text" placeholder="name"
-          value={name} onChange={(e) => setName(e.target.value)} />
+    <form onSubmit={handleOnSubmit}>
+      <div className="container">
+        <div className="image-section">
+          <img src={connexion} alt="image connexion" />
         </div>
-        <div class="input-group">
-          <label for="surname">Prénom :</label>
-          <input type="text" id="surname" />
-        </div>
-        <div class="input-group">
-          <label for="email">Email :</label>
-          <input type="email" id="email" 
-          value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div class="input-group">
-          <label for="password">Mot de passe :</label>
-          <input type="password" id="password" />
-        </div>
-        <div class="input-group">
-          <label for="text">Date de naissance :</label>
-          <input type="date" id="date_naissance" name="date_naissance" placeholder="jj/mm/aaaa"/>
-        </div>
-        <button type="button" onClick={showModal}>
-          CRÉER MON COMPTE
-        </button>
-        {isModalVisible && (
-          <div>
-            <div className="modal-overlay" onClick={btnAnnuler}></div>
-            <div className="modal-content">
-              <h2>Votre compte a bien été crée</h2>
-              <div className="modal-buttons">
-                <button onClick={redirectToLogin} className="modal-btn">
-                  Revoir à la page de connexion
-                </button>
-                <button onClick={btnAnnuler} className="modal-btn">
-                  Annuler
-                </button>
-              </div>
-            </div>
+        <div className="inscription-section">
+          <h2>INSCRIPTION</h2>
+          <div className="input-group">
+            <label htmlFor="nom">Nom:</label>
+            <input type="text" id="nom" value={values.nom} onChange={e => setValues({...values, nom: e.target.value})} />
           </div>
-        )}
-        <div class="text">
-          J'atteste <strong>l'exactitude des données.</strong>
-        </div>
-        <div class="text">
-          En créant mon compte j’accepte les{" "}
-          <strong>Conditions générales d’utilisations</strong>
-        </div>
-        <div class="text">
-          J’accepte la <strong>récolte des données</strong>
+          <div className="input-group">
+            <label htmlFor="prenom">Prénom :</label>
+            <input type="text" id="prenom" value={values.prenom} onChange={e => setValues({...values, prenom: e.target.value})} />
+          </div>
+          <div className="input-group">
+            <label htmlFor="email">Email :</label>
+            <input type="email" id="email" value={values.email} onChange={e => setValues({...values, email: e.target.value})} />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Mot de passe :</label>
+            <input type="password" id="password" value={values.password} onChange={e => setValues({...values, password: e.target.value})} />
+          </div>
+          <div className="input-group">
+            <label htmlFor="dateOfBirth">Date de naissance :</label>
+            <input type="date" id="dateOfBirth" value={values.dateOfBirth} onChange={e => setValues({...values, dateOfBirth: e.target.value})} />
+          </div>
+          <button type="submit">CRÉER MON COMPTE</button>
         </div>
       </div>
-    </div>
+    </form>
   );
 }
 
-export default Inscription;
+export default Inscription2;
