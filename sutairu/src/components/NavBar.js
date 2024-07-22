@@ -99,6 +99,9 @@ function Navbar({ name }) {
             <a href="/commandes" style={style.menuItem}>
               Commande
             </a>
+            <a href="/propos" style={style.menuItem}>
+              À propos
+            </a>
             <a href="/" style={style.menuItem}>
               Se déconnecter
             </a>
