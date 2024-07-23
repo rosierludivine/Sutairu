@@ -10,10 +10,11 @@ Title: Hoodie with hood up
 import React, {useEffect, useMemo} from 'react'
 import { useGLTF } from '@react-three/drei';
 import { BoxGeometry } from 'three';
-import { Color } from 'three';
+import { Color, TextureLoader, MeshBasicMaterial } from 'three';
 import TextTexture from './components/TextTexture';
+import { CanvasTexture } from 'three/src/textures/CanvasTexture';
 
-export default function Img({ color, updateImgColor,text, ...props }) {
+export default function Img({ color, updateImgColor,text,logoImage,Text, ...props }) {
   console.log('Img color:', color);
 
   const { nodes, materials } = useGLTF('/img.gltf');
@@ -42,6 +43,17 @@ export default function Img({ color, updateImgColor,text, ...props }) {
           <meshBasicMaterial map={textTexture} polygonOffset polygonOffsetFactor={-1}/>
         </mesh>
         <primitive object={new BoxGeometry(1, 1, 1)} />
+        {text && (
+          <Text
+            color="#000000"
+            fontSize={0.5}
+            position={[0, 0.5, -1.5]}
+            anchorX="center"
+            anchorY="middle"
+          >
+            {text}
+          </Text>
+        )}
       </group>
     </group>
   )

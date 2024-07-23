@@ -5,7 +5,7 @@ import Img from '../Img';
 import Tshirt from  '../Tshirt';
 import './three.css';
 
-export default function ThreeScene({ choice, color, text }) {
+export default function ThreeScene({ choice, color, text,logoImage }) {
     return (
       <Canvas>
       <ambientLight />
@@ -14,6 +14,9 @@ export default function ThreeScene({ choice, color, text }) {
       <Suspense fallback={null}>
         {choice === "Hoodie" ? <Img color={color} text={text}/> : null}
         {choice === "T-shirt" ? <Tshirt color={color} text={text}/> : null}
+        {logoImage && (
+        <img src={logoImage} alt="Logo" />
+        )}
       </Suspense>
       <Environment preset="sunset" />
     </Canvas>

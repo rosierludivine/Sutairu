@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect  } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import swipe from "../icons/swipe.svg";
@@ -72,12 +72,32 @@ export default function CreateDesign() {
     setSelectedChoix(choix);
   };
 
+  const logoInputRef = useRef(null);
+  const hoodieRef = useRef(null);
+  const [logoImage, setLogoImage] = useState(null);
+
+  useEffect(() => {
+    if (logoInputRef.current && hoodieRef.current) {
+      logoInputRef.current.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+    
+        reader.addEventListener('load', (event) => {
+          setLogo(event.target.result);
+        });
+    
+        reader.readAsDataURL(file);
+      });
+    }
+  }, [logoInputRef, hoodieRef]);
+
   return (
     <div className="container">
       <div className="left-part">
         <h2 className="create-design">Créer votre design</h2>
         <div className="img-scene">
-          <ThreeScene color={color} setColor={setColor} choice={selectedChoix} text={texte} />
+          <ThreeScene color={color} setColor={setColor} choice={selectedChoix} text={texte} logoImage={logoImage} setLogoImage={setLogoImage} />
+          <div id="hoodie" ref={hoodieRef} />
         </div>
         <div className="button-container">
           <button>
@@ -123,7 +143,7 @@ export default function CreateDesign() {
           </div>
         )}
         <input type="text" placeholder="Texte" value={texte} onChange={(e) => setTexte(e.target.value)} />
-        <input type="text" placeholder="Logo" value={logo} onChange={(e) => setLogo(e.target.value)} />
+        <input ref={logoInputRef} type="file" placeholder="Logo" />
         <div className="price">
           <span>Prix : </span>
           <span>28,99€</span>
