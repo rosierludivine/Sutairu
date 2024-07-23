@@ -85,57 +85,55 @@ function MesCommandes() {
           </button>
         </div>
       </div>
-      
-      <div className="payment-container">
-        <div className="payment-form">
-          <h1>Le payement</h1>
-          <div className="payment-options">
-            <button className="option selected">Cartes</button>
-            <button className="option">Apple Pay</button>
-            <button className="option">PayPal</button>
+      {/* second part */}
+      <div class="payment-form child">
+        <h1>Le payement</h1>
+        <div class="payment-options">
+          <button class="option selected">Cartes</button>
+          <button class="option">Apple Pay</button>
+          <button class="option">PayPal</button>
+        </div>
+        <form>
+          <div class="form-group">
+            <label for="card-number" class="card-text">Numéro de Carte :</label>
+            <input type="text" id="card-number" class="placeholder" placeholder="Votre nom" />
           </div>
-          <form>
-            <div className="form-group">
-              <label htmlFor="card-number" className="card-text">Numéro de Carte :</label>
-              <input type="text" id="card-number" className="placeholder" placeholder="Votre nom" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="expiration" className="card-text">Expiration :</label>
-              <input type="text" id="expiration" className="placeholder" placeholder="Votre expiration" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="cvc" className="card-text">CVC :</label>
-              <input type="text" id="cvc" className="placeholder" placeholder="Votre CVC" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="country" className="card-text">Pays :</label>
-              <select id="country" className="country">
-                <option value="">Sélectionnez un pays</option>
-                {countryOptions.map((country) => (
-                  <option key={country.code} value={country.code}>
-                    {country.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <button type="button" className="butt-paye" onClick={showModal}>
-              Payer
-            </button>
-            {isModalVisible && (
-              <div>
-                <div className="modal-overlay"></div>
-                <div className="modal-content">
-                  <h2>Votre paiement a bien été accepté</h2>
-                  <div className="modal-buttons">
-                    <button onClick={suivreMonColis} className="modal-btn">
-                      Suivre mon colis
-                    </button>
-                  </div>
+          <div class="form-group">
+            <label for="expiration" class="card-text">Expiration :</label>
+            <input type="text" id="expiration" class="placeholder" placeholder="Votre expiration" />
+          </div>
+          <div class="form-group">
+            <label for="cvc" class="card-text">CVC : </label>
+            <input type="text" id="cvc"  class="placeholder"placeholder="Votre CVC" />
+          </div>
+          <div class="form-group">
+            <label for="country" class="card-text">Pays :</label>
+            <select id="country" class="country">
+              <option value="">Sélectionnez un pays</option>
+              {countryOptions.map((country) => (
+                <option key={country.code} value={country.code}>
+                  {country.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button type="button"  className="butt-paye" onClick={showModal}>
+            Payer
+          </button>
+          {isModalVisible && (
+            <div>
+              <div className="modal-overlay"></div>
+              <div className="modal-content">
+                <h2>Votre paiement a bien été accepté</h2>
+                <div className="modal-buttons">
+                  <button onClick={suivreMonColis} className="modal-btn">
+                    Suivre mon colis
+                  </button>
                 </div>
               </div>
-            )}
-          </form>
-        </div>
+            </div>
+          )}
+        </form>
       </div>
     </div>
   );

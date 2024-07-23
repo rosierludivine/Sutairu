@@ -5,15 +5,15 @@ import Img from '../Img';
 import Tshirt from  '../Tshirt';
 import './three.css';
 
-export default function ThreeScene({ choice, color }) {
+export default function ThreeScene({ choice, color, text }) {
     return (
       <Canvas>
       <ambientLight />
       <OrbitControls enableZoom={false} />
       <pointLight position-y={[0, 0, -2]} />
       <Suspense fallback={null}>
-        {choice === "Hoodie" ? <Img color={color} /> : null}
-        {choice === "T-shirt" ? <Tshirt color={color} /> : null}
+        {choice === "Hoodie" ? <Img color={color} text={text}/> : null}
+        {choice === "T-shirt" ? <Tshirt color={color} text={text}/> : null}
       </Suspense>
       <Environment preset="sunset" />
     </Canvas>

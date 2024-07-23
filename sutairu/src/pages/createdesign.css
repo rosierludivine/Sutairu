@@ -144,4 +144,39 @@
   .create-design {
     color: #000000;
   }
+
+
+
+
+    @media (max-width: 768px) {
+    .left-part {
+      flex-direction: column;
+      align-items: center !important;
+      width: 100% !important;
+      margin-top: 10%;
+    }
+    .right-part{
+      flex-direction: column;
+      align-items: center !important;
+      width: 100% !important;
+      padding-top: unset;
+    }
+    .container{
+      flex-direction: column !important;
+    }
+    .price{
+      margin-top: 7% !important;
+      margin-bottom: 7%;
+    }
+    .voir-le-panier{
+      margin-top: 7% !important;
+      margin-bottom: 17%;
+      margin-left: unset;
+      margin-right: unset !important;
+
+    }
+    .right-part input{
+      width: 70% !important;
+    }
+  }
   

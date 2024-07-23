@@ -81,4 +81,24 @@
     margin-top: 5px;
     margin-left: 13%;
   }
+
+  
+  @media (max-width: 768px) {
+    .process-wrapper{
+      flex-direction: column !important;
+    }
+    .process-icon{
+      width: 60px !important;
+      height: 60px;
+    }
+    .process-icon img{
+      width: 20%;
+    }
+    .process-text{
+      font-size: small;
+    }
+    .footpart{
+      padding-bottom: 17% !important;
+    }
+  }
   

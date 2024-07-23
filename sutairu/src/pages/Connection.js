@@ -56,7 +56,7 @@ function Connection() {
               required
             />
           </div>
-          <button type="submit">CONNEXION</button>
+          <button type="submit" className="button">CONNEXION</button>
         </form>
         {errorMessage && <div className="error-message">{errorMessage}</div>} {/* Afficher le message d'erreur */}
         <div className="text">

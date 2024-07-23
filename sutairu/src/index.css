@@ -15,6 +15,17 @@ body {
 
   }
   
+  @media screen and (max-width:768px){
+    .mainDiv{
+
+    height: 100% !important;
+    }    
+    .container{
+
+      height: 100% !important;
+      }
+  }
+
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;

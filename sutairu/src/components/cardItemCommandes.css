@@ -31,3 +31,13 @@
     font-size: 15px;
     margin-left: 30%; /* Gap between 3rd (size/price) and 4th (delete icon) elements */
   }
+
+  
+  @media (max-width: 768px) {
+    .sizePriceCommandes{
+      margin-left: 10%;
+    }
+    .productNameCommandes{
+      margin-left: 10% !important;
+    }
+  }

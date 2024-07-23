@@ -77,7 +77,7 @@ export default function CreateDesign() {
       <div className="left-part">
         <h2 className="create-design">Créer votre design</h2>
         <div className="img-scene">
-          <ThreeScene color={color} setColor={setColor} choice={selectedChoix} />
+          <ThreeScene color={color} setColor={setColor} choice={selectedChoix} text={texte} />
         </div>
         <div className="button-container">
           <button>

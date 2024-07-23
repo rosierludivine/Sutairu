@@ -1,7 +1,7 @@
 import React, {Suspense} from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls } from "@react-three/drei";
-import Img from '../Img';
+import ImgHome from '../ImgHome';
 import './three.css';
 
 export default function ThreeSceneHome({ color }) {
@@ -11,7 +11,7 @@ export default function ThreeSceneHome({ color }) {
       <OrbitControls enableZoom={false} />
       <pointLight position-y={[0, 0, -2]} />
       <Suspense fallback={null}>
-        <Img color={color} />
+        <ImgHome color={color} />
       </Suspense>
       <Environment preset="sunset" />
     </Canvas>
