@@ -243,6 +243,7 @@ h1 {
   overflow-y: scroll;
 }
 
+
 /* Styles spécifiques pour les conteneurs d'articles */
 .card-container-commandes, .payment-form {
   margin: 10px 0;
