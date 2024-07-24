@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "./mesdesign.css";
 import pull from "../images/pull.jpg";
 import CardItemCommandes from "../components/CardItemCommandes";
-import { countries } from "countries-list";
+//import { countries } from "countries-list";
+import StripeContainer from "../stripe/StripeContainer";
 
 function MesCommandes() {
   const CardItemsCommmande = [
@@ -51,12 +52,12 @@ function MesCommandes() {
     },
   ];
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
 
-  // Function to toggle the modal's visibility
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
+  // // Function to toggle the modal's visibility
+  // const showModal = () => {
+  //   setIsModalVisible(true);
+  // };
 
   // Function to hide the modal
   const suivreMonColis = () => {
@@ -69,10 +70,10 @@ function MesCommandes() {
 //     setIsModalVisible(false);
 //   };
 
-  const countryOptions = Object.keys(countries).map((code) => ({
-    code,
-    name: countries[code].name,
-  }));
+  // const countryOptions = Object.keys(countries).map((code) => ({
+  //   code,
+  //   name: countries[code].name,
+  // }));
 
   return (
     <div className="container">
@@ -95,9 +96,10 @@ function MesCommandes() {
           <button class="option">Apple Pay</button>
           <button class="option">PayPal</button>
         </div>
-        <form>
+        {/* <form> */}
           <div class="form-group">
-            <label for="card-number" class="card-text">Numéro de Carte :</label>
+            <StripeContainer/>
+            {/* <label for="card-number" class="card-text">Numéro de Carte :</label>
             <input type="text" id="card-number" class="placeholder" placeholder="Votre nom" />
           </div>
           <div class="form-group">
@@ -106,9 +108,9 @@ function MesCommandes() {
           </div>
           <div class="form-group">
             <label for="cvc" class="card-text">CVC : </label>
-            <input type="text" id="cvc"  class="placeholder"placeholder="Votre CVC" />
+            <input type="text" id="cvc"  class="placeholder"placeholder="Votre CVC" /> */}
           </div>
-          <div class="form-group">
+          {/* <div class="form-group">
             <label for="country" class="card-text">Pays :</label>
             <select id="country" class="country">
               <option value="">Sélectionnez un pays</option>
@@ -118,11 +120,11 @@ function MesCommandes() {
                 </option>
               ))}
             </select>
-          </div>
-          <button type="button"  className="butt-paye" onClick={showModal}>
+          </div> */}
+          {/* <button type="button"  className="butt-paye" onClick={showModal}>
             Payer
-          </button>
-          {isModalVisible && (
+          </button> */}
+          {/* {isModalVisible && (
             <div className="modal-overlay">
               <div className="modal-content">
                 <h2>Votre paiement a bien été accepté</h2>
@@ -133,8 +135,8 @@ function MesCommandes() {
                 </div>
               </div>
             </div>
-          )}
-        </form>
+          )} */}
+        {/* </form> */}
       </div>
     </div>
   );
