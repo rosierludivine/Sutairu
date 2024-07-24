@@ -150,7 +150,7 @@ export default function CreateDesign() {
         </div>
         <button onClick={handleSave} className="sauvgarder">Sauvgarde</button>
         <button onClick={redirecttoMesDesigns} className="add-to-basket">
-          Ajouter au panier
+          Voir mes Designs
         </button>
         <button onClick={redirecttoPanier} className="voir-le-panier">
           Voir le panier
