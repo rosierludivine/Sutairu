@@ -86,7 +86,7 @@ async function connectToDatabase() {
                     confirm: true,
                     automatic_payment_methods: {
                         enabled: true,
-                        allow_redirects: 'never',
+                        allow_redirects: 'never', // Assurez-vous que les redirections sont désactivées
                     },
                 });
                 res.json({

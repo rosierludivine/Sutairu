@@ -1,10 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
-export const CheckoutForm= ()=>{
+export const CheckoutForm= ({ amount })=>{
     const stripe = useStripe();
     const elements = useElements();
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const navigate = useNavigate();
+    // Function to toggle the modal's visibility
+    const showModal = () => {
+      setIsModalVisible(true);
+    };
+  
+    const redirectionsPageHome = () => {
+      navigate("/");
+    };
+  
+    const closeModal = () => {
+      setIsModalVisible(false);
+    };
 
     const handleSubmit =async(event)=>{
         event.preventDefault();
@@ -18,7 +34,7 @@ export const CheckoutForm= ()=>{
                 const {id} = paymentMethod;
                 const response = await axios.post("http://localhost:5000/stripe/charge",
                 {
-                    amount: 1000,
+                    amount: Math.round(amount * 100),
                     id: id,
                 });
                 if (response.data.success)
@@ -41,6 +57,19 @@ export const CheckoutForm= ()=>{
             }}
             />
             <button style={{backgroundColor: "#0E4A65"}}>Payer</button>
+            {isModalVisible && (
+              <div>
+                <div className="modal-overlay"></div>
+                <div className="modal-content">
+                  <h2>Votre paiement a bien été accepté</h2>
+                  <div className="modal-buttons">
+                    <button onClick={redirectionsPageHome} className="modal-btn">
+                      Revenir à la page d'acceuil
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
         </form>
     )
 }

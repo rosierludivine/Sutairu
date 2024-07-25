@@ -9,7 +9,7 @@ import axios from "axios";
 import ThreeArticle from "../components/ThreeArticle"
 function MesCommandes() {
   const [panier, setPanier] = useState([]);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPanier = async () => {
@@ -34,25 +34,26 @@ function MesCommandes() {
     return total;
   };
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
 
-  // Function to toggle the modal's visibility
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
+  // // Function to toggle the modal's visibility
+  // const showModal = () => {
+  //   setIsModalVisible(true);
+  // };
 
-  const suivreMonColis = () => {
-    navigate("/colis");
-  };
+  // const redirectionsPageHome = () => {
+  //   navigate("/");
+  // };
 
-  const closeModal = () => {
-    setIsModalVisible(false);
-  };
+  // const closeModal = () => {
+  //   setIsModalVisible(false);
+  // };
 
   // const countryOptions = Object.keys(countries).map((code) => ({
   //   code,
   //   name: countries[code].name,
   // }));
+  
   return (
     <div className="main-container-commandes">
       <div className="card-container-commandes">
@@ -94,25 +95,10 @@ function MesCommandes() {
           <h1>Le payement</h1>
           <div className="payment-options">
             <button className="option selected">Cartes</button>
-            <button className="option">Apple Pay</button>
-            <button className="option">PayPal</button>
           </div>
           <div class="form-group">
-            <StripeContainer/>
+            <StripeContainer amount={calculerPrixTotal()}/>
             </div>
-            {isModalVisible && (
-              <div>
-                <div className="modal-overlay"></div>
-                <div className="modal-content">
-                  <h2>Votre paiement a bien été accepté</h2>
-                  <div className="modal-buttons">
-                    <button onClick={suivreMonColis} className="modal-btn">
-                      Suivre mon colis
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
         </div>
       </div>
     </div>
