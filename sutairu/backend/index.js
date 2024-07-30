@@ -5,12 +5,14 @@ import inscriptionRoutes from "./routes/inscriptionRoutes.js";
 import connexionRoutes from "./routes/connexionRoutes.js";
 import sauvegardeRoutes from "./routes/sauvegardeRoutes.js"; 
 import panierRoutes from "./routes/panierRoutes.js"; 
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
-const uri = "mongodb+srv://UserDB:RUV0xqiwSQjnEX9o@sutairu.dabgfok.mongodb.net/Sutairu?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI;
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.ORIGIN,
   methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -24,7 +26,7 @@ async function connectToDatabase() {
 
         app.use("/inscription", inscriptionRoutes); 
         app.use("/connexion", connexionRoutes); 
-        app.use("/article", sauvegardeRoutes); // Utilisation de sauvegardeRoutes pour gérer les articles
+        app.use("/article", sauvegardeRoutes); 
         app.use("/panier", panierRoutes); 
 
         app.listen(5000, () => {
