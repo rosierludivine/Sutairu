@@ -7,53 +7,61 @@ Source: https://sketchfab.com/3d-models/hoodie-with-hood-up-237449b193714dfaa13b
 Title: Hoodie with hood up
 */
 
-import React, {useEffect, useMemo} from 'react'
+import React, {useEffect, useMemo, useState} from 'react'
 import { useGLTF } from '@react-three/drei';
 import { BoxGeometry } from 'three';
 import { Color, TextureLoader, MeshBasicMaterial } from 'three';
 import TextTexture from './components/TextTexture';
 import { CanvasTexture } from 'three/src/textures/CanvasTexture';
+import { useLoader } from '@react-three/fiber';
+import createLogoTexture  from './components/LogoTexture';
 
-export default function Img({ color, updateImgColor,text,logoImage,Text, ...props }) {
+export default function Img({ color, updateImgColor,text, logoImage, ...props }) {
   console.log('Img color:', color);
 
   const { nodes, materials } = useGLTF('/img.gltf');
+  const [logoTexture, setLogoTexture] = useState(null);
+
   useEffect(() => {
-    if (materials['Material238904.005']) {
-      materials['Material238904.005'].color.set(new Color(color));
+    Object.values(materials).forEach((material) => {
+      if (material) {
+        material.color.set(new Color(color));
+      }
+    });
+
+    if (logoImage) {
+      createLogoTexture(logoImage, color).then(setLogoTexture).catch(console.error);
     }
-  }, [color, materials]);
+  }, [color, materials, logoImage]);
 
   const textTexture = useMemo(() => TextTexture(text, color), [text, color]);
-
   return (
     <group {...props} dispose={null} scale={6}>
       
       <group rotation={[-Math.PI / 2, 0, 0]}>
-        <mesh geometry={nodes.Object_2.geometry} material={materials['Material238904.005']} position={[0, 0, -1.5]}>
+        <mesh geometry={nodes.Object_2.geometry} material={materials ? materials['Material238904.005'] : undefined} position={[0, 0, -1.5]} >
+        {logoTexture  && (
+          <mesh 
+          geometry={nodes.Object_2.geometry}
+          position={[0, 0, 0]} // Ajustez la position pour centrer le logo sur le devant
+          scale={[1, 1, 1]}
+            >
+            <meshBasicMaterial map={logoTexture} polygonOffset polygonOffsetFactor={-1} />
+          </mesh>
+          
+        )}
           <meshBasicMaterial map={textTexture} polygonOffset polygonOffsetFactor={-1}/>
         </mesh>
-        <mesh geometry={nodes.Object_3.geometry} material={materials['Material238904.005']} position={[0, 0, -1.5]}>
+        <mesh geometry={nodes.Object_3.geometry} material={materials ? materials['Material238904.005'] : undefined} position={[0, 0, -1.5]}>
           <meshBasicMaterial map={textTexture} polygonOffset polygonOffsetFactor={-1}/>
         </mesh>
-        <mesh geometry={nodes.Object_4.geometry} material={materials['Material238904.005']} position={[0, 0, -1.5]}>
+        <mesh geometry={nodes.Object_4.geometry} material={materials ? materials['Material238904.005'] : undefined} position={[0, 0, -1.5]}>
           <meshBasicMaterial map={textTexture} polygonOffset polygonOffsetFactor={-1}/>
         </mesh>
-        <mesh geometry={nodes.Object_5.geometry} material={materials['Material238904.005']} position={[0, 0, -1.5]}>
+        <mesh geometry={nodes.Object_5.geometry} material={materials ? materials['Material238904.005'] : undefined} position={[0, 0, -1.5]}>
           <meshBasicMaterial map={textTexture} polygonOffset polygonOffsetFactor={-1}/>
         </mesh>
         <primitive object={new BoxGeometry(1, 1, 1)} />
-        {text && (
-          <Text
-            color="#000000"
-            fontSize={0.5}
-            position={[0, 0.5, -1.5]}
-            anchorX="center"
-            anchorY="middle"
-          >
-            {text}
-          </Text>
-        )}
       </group>
     </group>
   )

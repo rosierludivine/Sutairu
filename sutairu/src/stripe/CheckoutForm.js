@@ -6,9 +6,12 @@ import { useNavigate } from "react-router-dom";
 export const CheckoutForm= ({ amount })=>{
     const stripe = useStripe();
     const elements = useElements();
-
-    const [isModalVisible, setIsModalVisible] = useState(false);
     const navigate = useNavigate();
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isCardComplete, setIsCardComplete] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [formSubmitted, setFormSubmitted] = useState(false);
+    
     // Function to toggle the modal's visibility
     const showModal = () => {
       setIsModalVisible(true);
@@ -22,8 +25,19 @@ export const CheckoutForm= ({ amount })=>{
       setIsModalVisible(false);
     };
 
+    const handleCardChange = (event) => {
+      setIsCardComplete(event.complete);
+  };
+
     const handleSubmit =async(event)=>{
         event.preventDefault();
+        setFormSubmitted(true); // Update formSubmitted state when the form is submitted
+
+        if (!isCardComplete) {
+            return; // Stop the submission if card details are not complete
+        }
+
+        setIsLoading(true);
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: 'card',
             card: elements.getElement(CardElement),
@@ -47,7 +61,8 @@ export const CheckoutForm= ({ amount })=>{
         else{
             console.log(error.message);
         }
-    }
+        setIsLoading(false);
+    };
 
     return(
         <form onSubmit={handleSubmit} style={{ minWidth: 400}}>
@@ -55,8 +70,12 @@ export const CheckoutForm= ({ amount })=>{
             options={{
                 hidePostalCode: true
             }}
+            onChange={handleCardChange}
             />
-            <button style={{backgroundColor: "#0E4A65"}}>Payer</button>
+            {formSubmitted && !isCardComplete && (
+                <p style={{ color: 'red', marginTop: '10px' }}>Le champ de la carte est obligatoire.</p>
+            )}
+            <button type="submit" onClick={showModal} disabled={!isCardComplete || isLoading} style={{backgroundColor: "#0E4A65"}}>{isLoading ? 'Processing...' : 'Payer'}</button>
             {isModalVisible && (
               <div>
                 <div className="modal-overlay"></div>
@@ -65,6 +84,9 @@ export const CheckoutForm= ({ amount })=>{
                   <div className="modal-buttons">
                     <button onClick={redirectionsPageHome} className="modal-btn">
                       Revenir à la page d'acceuil
+                    </button>
+                    <button onClick={closeModal} className="modal-btn">
+                      Fermer
                     </button>
                   </div>
                 </div>

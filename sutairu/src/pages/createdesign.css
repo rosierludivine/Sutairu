@@ -24,6 +24,10 @@
     /* gap: 10px;
     width: 40%; */
   }
+
+  .swipe-share{
+    width: 30px;
+  }
   .right-part input {
     border-radius: 8px;
     background: #f7f3f5;
@@ -143,6 +147,8 @@
   }
   .create-design {
     color: #000000;
+    padding-bottom: 0%;
+    margin-bottom: 0;
   }
 
 

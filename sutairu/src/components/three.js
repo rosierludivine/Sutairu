@@ -12,11 +12,11 @@ export default function ThreeScene({ choice, color, text,logoImage }) {
       <OrbitControls enableZoom={false} />
       <pointLight position-y={[0, 0, -2]} />
       <Suspense fallback={null}>
-        {choice === "Hoodie" ? <Img color={color} text={text}/> : null}
-        {choice === "T-shirt" ? <Tshirt color={color} text={text}/> : null}
-        {logoImage && (
+        {choice === "Hoodie" ? <Img color={color} text={text} logoImage={logoImage} /> : null}
+        {choice === "T-shirt" ? <Tshirt color={color} text={text} logoImage={logoImage} /> : null}
+        {/* {logoImage && (
         <img src={logoImage} alt="Logo" />
-        )}
+        )} */}
       </Suspense>
       <Environment preset="sunset" />
     </Canvas>

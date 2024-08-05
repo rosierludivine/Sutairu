@@ -76,20 +76,16 @@ export default function CreateDesign() {
   const hoodieRef = useRef(null);
   const [logoImage, setLogoImage] = useState(null);
 
-  useEffect(() => {
-    if (logoInputRef.current && hoodieRef.current) {
-      logoInputRef.current.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-    
-        reader.addEventListener('load', (event) => {
-          setLogo(event.target.result);
-        });
-    
-        reader.readAsDataURL(file);
-      });
+  const handleLogoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setLogoImage(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
-  }, [logoInputRef, hoodieRef]);
+  };
 
   return (
     <div className="container">
@@ -101,10 +97,10 @@ export default function CreateDesign() {
         </div>
         <div className="button-container">
           <button>
-            <img src={swipe} alt="swipe" />
+            <img src={swipe} alt="swipe" className="swipe-share"/>
           </button>
           <button>
-            <img src={share} alt="share" />
+            <img src={share} alt="share" className="swipe-share"/>
           </button>
         </div>
       </div>
@@ -143,7 +139,7 @@ export default function CreateDesign() {
           </div>
         )}
         <input type="text" placeholder="Texte" value={texte} onChange={(e) => setTexte(e.target.value)} />
-        <input ref={logoInputRef} type="file" placeholder="Logo" />
+        <input ref={logoInputRef} type="file" placeholder="Logo" onChange={handleLogoChange} />
         <div className="price">
           <span>Prix : </span>
           <span>28,99€</span>

@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "./mesCommandes.css";
-import pull from "../images/pull.jpg";
-import CardItemCommandes from "../components/CardItemCommandes";
-import { countries } from "countries-list";
 import StripeContainer from "../stripe/StripeContainer";
 import axios from "axios";
 import ThreeArticle from "../components/ThreeArticle"
@@ -98,7 +94,7 @@ function MesCommandes() {
           </div>
           <div class="form-group">
             <StripeContainer amount={calculerPrixTotal()}/>
-            </div>
+          </div>
         </div>
       </div>
     </div>
