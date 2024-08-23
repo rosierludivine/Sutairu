@@ -55,4 +55,37 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Route pour mettre à jour un article par son ID
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const { email, hoodie, taille, couleur, texte, logo, prix } = req.body;
+
+  try {
+      // Vérifiez que l'ID est valide et que les données sont présentes
+      if (!id) {
+          return res.status(400).json({ message: "ID requis." });
+      }
+
+      const updatedArticle = await Article.findByIdAndUpdate(id, {
+          email,
+          hoodie,
+          taille,
+          couleur,
+          texte,
+          logo,
+          prix
+      }, { new: true }); // { new: true } retourne le document après la mise à jour
+
+      if (!updatedArticle) {
+          return res.status(404).json({ message: "Article non trouvé." });
+      }
+
+      res.status(200).json({ message: "Article mis à jour avec succès.", article: updatedArticle });
+  } catch (error) {
+      console.error("Erreur lors de la mise à jour de l'article :", error);
+      res.status(500).json({ message: "Erreur lors de la mise à jour de l'article.", error: error.message });
+  }
+});
+
+
 export default router;

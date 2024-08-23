@@ -1,14 +1,17 @@
 import React from "react";
-import "../pages/mesdesign.css";
-import edit from "../icons/edit.svg";
+import { useNavigate } from 'react-router-dom';  // Assurez-vous que le hook est importé
 import axios from 'axios';
-import ThreeArticle from "../components/ThreeArticle";
+import edit from "../icons/edit.svg";
 import deleteSvg from "../icons/deleteSvg.svg";
+import ThreeArticle from "../components/ThreeArticle";
+import "../pages/mesdesign.css";
 
 const CardItem = ({ item, ajouterAuPanier }) => {
+  const navigate = useNavigate();  // Utilisation de useNavigate pour initialiser navigate
+
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/article/${item.id}`);
+      await axios.delete(`http://localhost:5000/article/${item.id}`);
       alert("Article supprimé avec succès");
       window.location.reload();
     } catch (error) {
@@ -16,10 +19,14 @@ const CardItem = ({ item, ajouterAuPanier }) => {
     }
   };
 
+  const handleEdit = () => {
+    navigate(`/edit-design/${item.id}`);  // Utilisation correcte de navigate ici
+  };
+
   const handleAddToCart = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/panier', {
-        user: "lulu@test.com", // Remplacer par l'utilisateur actuel
+      await axios.post('http://localhost:5000/panier', {
+        user: "lulu@test.com",  // Remplacer par l'utilisateur actuel
         articleId: item.id,
         quantite: 1
       });
@@ -46,8 +53,12 @@ const CardItem = ({ item, ajouterAuPanier }) => {
           Ajouter au panier
         </button>
         <div className="deleteIcon">
-          <button className="boutonIconEdit"><img src={edit} alt="edit icon" style={{width: "25px", height:"auto"}}/></button>
-          <button className="boutonIcon" onClick={handleDelete}><img src={deleteSvg} alt="delete icon" style={{width: "25px", height:"auto"}}/></button>
+          <button className="boutonIconEdit" onClick={handleEdit}>
+            <img src={edit} alt="edit icon" style={{width: "25px", height:"auto"}} />
+          </button>
+          <button className="boutonIcon" onClick={handleDelete}>
+            <img src={deleteSvg} alt="delete icon" style={{width: "25px", height:"auto"}}/>
+          </button>
         </div>
       </div>
     </div>
