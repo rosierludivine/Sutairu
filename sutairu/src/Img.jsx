@@ -46,20 +46,17 @@ export default function Img({ color, updateImgColor,text, logoImage, ...props })
           position={[0, 0, 0]} // Ajustez la position pour centrer le logo sur le devant
           scale={[1, 1, 1]}
             >
-            <meshBasicMaterial map={logoTexture} polygonOffset polygonOffsetFactor={-1} />
+            <meshBasicMaterial map={logoTexture} polygonOffset polygonOffsetFactor={-1} depthTest={false}/>
           </mesh>
           
         )}
-          <meshBasicMaterial map={textTexture} polygonOffset polygonOffsetFactor={-1}/>
+          <meshBasicMaterial map={textTexture} renderOrder={1}/>
         </mesh>
         <mesh geometry={nodes.Object_3.geometry} material={materials ? materials['Material238904.005'] : undefined} position={[0, 0, -1.5]}>
-          <meshBasicMaterial map={textTexture} polygonOffset polygonOffsetFactor={-1}/>
         </mesh>
         <mesh geometry={nodes.Object_4.geometry} material={materials ? materials['Material238904.005'] : undefined} position={[0, 0, -1.5]}>
-          <meshBasicMaterial map={textTexture} polygonOffset polygonOffsetFactor={-1}/>
         </mesh>
         <mesh geometry={nodes.Object_5.geometry} material={materials ? materials['Material238904.005'] : undefined} position={[0, 0, -1.5]}>
-          <meshBasicMaterial map={textTexture} polygonOffset polygonOffsetFactor={-1}/>
         </mesh>
         <primitive object={new BoxGeometry(1, 1, 1)} />
       </group>
