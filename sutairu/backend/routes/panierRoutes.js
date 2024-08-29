@@ -1,5 +1,5 @@
 import express from "express";
-import Panier from "../models/Panier.js";
+import Panier from "../models/panier.js";
 
 const router = express.Router();
 
