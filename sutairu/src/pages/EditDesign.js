@@ -75,11 +75,11 @@ export default function EditDesign() {
         <div className="container">
             <div className="left-part">
                 <h2 className="create-design">Modifier votre design</h2>
-                <div className="img-scene">
+                {/* <div className="img-scene">
                     {articleLoaded && (
                         <ThreeSceneEdit color={color} setColor={setColor} choice={selectedChoix} text={texte} />
                     )}
-                </div>
+                </div> */}
                 <div className="button-container">
                     <button>
                         <img src={swipe} alt="swipe" />
@@ -130,12 +130,7 @@ export default function EditDesign() {
                     <span>28,99€</span>
                 </div>
                 <button onClick={handleSave} className="sauvgarder">Sauvegarder</button>
-                <button onClick={redirecttoMesDesigns} className="add-to-basket">
-                    Voir mes Designs
-                </button>
-                <button onClick={redirecttoPanier} className="voir-le-panier">
-                    Voir le panier
-                </button>
+                
             </div>
         </div>
     );

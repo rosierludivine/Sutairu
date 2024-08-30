@@ -66,7 +66,7 @@ function Connection() {
           </strong>
         </div>
         <div className="text">
-          <strong>Mot de passe oublié</strong>
+        <Link to="/changement-mot-de-passe">Mot de passe oublié</Link>
         </div>
       </div>
     </div>
